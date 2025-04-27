@@ -6,30 +6,8 @@ import BlogPosts from '@/components/BlogPosts.vue'
   <header
     class="fixed top-0 w-full p-8 md:p-4 flex items-center justify-between md:justify-center md:bg-[#181818]"
   >
-    <h1 class="text-3xl text-orange-500 font-sans">
-      Bayardo <span class="text-white">López</span>
-    </h1>
+    <h1 class="text-3xl font-sans">Bayardo <span class="text-white">López</span></h1>
 
-    <nav class="flex flex-col">
-      <button
-        @click="toggleMenu"
-        v-if="!isMenuOpen"
-        class="text-orange-500 text-3xl transition-all duration-300"
-      >
-        <i class="fa fa-bars"></i>
-        <!-- Hamburger icon -->
-      </button>
-      <Transition name="slide">
-        <div
-          v-if="isMenuOpen"
-          class="fixed inset-0 w-full h-full bg-transparent z-40"
-          @click.self="closeMenu"
-        >
-          <div class="fixed top-0 right-0 h-screen w-1/3 bg-gray-800 z-50">hello world</div>
-        </div>
-      </Transition>
-    </nav>
-    <!--
     <nav class="flex flex-col md:flex-row md:space-x-8 md:pl-36">
       <div class="md:hidden">
         <button
@@ -38,6 +16,7 @@ import BlogPosts from '@/components/BlogPosts.vue'
           class="text-orange-500 text-3xl transition-all duration-300"
         >
           <i class="fa fa-bars"></i>
+          <!-- Hamburger icon -->
         </button>
       </div>
       <Transition name="slide">
@@ -74,7 +53,7 @@ import BlogPosts from '@/components/BlogPosts.vue'
           </div>
         </div>
       </Transition>
-    </nav> -->
+    </nav>
   </header>
 </template>
 
@@ -113,20 +92,22 @@ export default {
 </script>
 
 <style scoped>
+/* Transition classes */
 .slide-enter-from {
   transform: translateX(100%);
 }
 .slide-enter-active {
-  transition: all 0.3s ease;
+  transition: transform 0.4s ease;
 }
 .slide-enter-to {
   transform: translateX(0%);
 }
+
 .slide-leave-from {
   transform: translateX(0%);
 }
 .slide-leave-active {
-  transition: all 0.3s ease;
+  transition: transform 0.4s ease;
 }
 .slide-leave-to {
   transform: translateX(100%);
