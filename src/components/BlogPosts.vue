@@ -37,7 +37,6 @@ export default {
   created() {
     // Fetch tasks on page load
     this.getData()
-    console.log('hello world')
   },
 }
 </script>
