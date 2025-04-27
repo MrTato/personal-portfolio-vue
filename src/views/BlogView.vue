@@ -11,21 +11,31 @@ import BlogPosts from '@/components/BlogPosts.vue'
     </h1>
 
     <nav class="flex flex-col">
-      <button
-        @click="toggleMenu"
-        v-if="!isMenuOpen"
-        class="text-orange-500 text-3xl transition-all duration-300"
-      >
-        <i class="fa fa-bars"></i>
-        <!-- Hamburger icon -->
-      </button>
+      <Transition name="spiral-collapse">
+        <button
+          @click="toggleMenu"
+          v-if="!isMenuOpen"
+          class="text-orange-500 text-3xl transition-all duration-300"
+        >
+          <i class="fa fa-bars"></i>
+          <!-- Hamburger icon -->
+        </button>
+      </Transition>
       <Transition name="slide">
         <div
           v-if="isMenuOpen"
           class="fixed inset-0 w-full h-full bg-transparent z-40"
           @click.self="closeMenu"
         >
-          <div class="fixed top-0 right-0 h-screen w-1/3 bg-gray-800 z-50">hello world</div>
+          <div
+            class="fixed top-0 right-0 h-screen w-1/3 z-50 bg-orange-500 text-white space-y-4 pt-8 flex flex-col"
+          >
+            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full">Blog</a>
+            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full"
+              >Projects</a
+            >
+            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full">About</a>
+          </div>
         </div>
       </Transition>
     </nav>
@@ -130,5 +140,29 @@ export default {
 }
 .slide-leave-to {
   transform: translateX(100%);
+}
+
+.spiral-collapse-enter-from {
+  opacity: 0;
+  transform: scale(0) rotate(-180deg);
+}
+.spiral-collapse-enter-active {
+  transition: all 0.5s ease-out;
+}
+.spiral-collapse-enter-to {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.spiral-collapse-leave-from {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+.spiral-collapse-leave-active {
+  transition: all 0.5s ease-in;
+}
+.spiral-collapse-leave-to {
+  opacity: 0;
+  transform: scale(0) rotate(360deg);
 }
 </style>
