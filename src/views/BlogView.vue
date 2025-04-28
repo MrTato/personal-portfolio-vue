@@ -1,14 +1,14 @@
 <script setup>
 import BlogPosts from '@/components/BlogPosts.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 </script>
 
 <template>
   <header
-    class="fixed top-0 w-full p-8 md:p-4 flex items-center justify-between md:justify-center md:bg-[#181818]"
+    class="fixed top-0 flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
   >
-    <h1 class="text-3xl text-orange-500 font-sans">
-      Bayardo <span class="text-white">López</span>
+    <h1 class="font-sans text-3xl text-orange-500">
+      Bayardo
+      <span class="text-white">López</span>
     </h1>
 
     <!-- This is the mobile view navbar -->
@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
         <button
           @click="toggleMenu"
           v-if="!isMenuOpen"
-          class="text-orange-500 text-3xl transition-all duration-300"
+          class="text-3xl text-orange-500 transition-all duration-300"
         >
           <font-awesome-icon :icon="['fas', 'bars']" />
           <!-- Hamburger icon -->
@@ -26,69 +26,42 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
       <Transition name="slide">
         <div
           v-if="isMenuOpen"
-          class="fixed inset-0 w-full h-full bg-transparent z-40"
+          class="fixed inset-0 z-40 h-full w-full bg-transparent"
           @click.self="closeMenu"
         >
           <div
-            class="fixed top-0 right-0 h-screen w-1/3 z-50 bg-orange-500 text-white space-y-4 pt-8 flex flex-col"
+            class="fixed top-0 right-0 z-50 flex h-screen w-1/3 flex-col space-y-4 bg-orange-500 pt-8 text-white"
           >
-            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full">Blog</a>
-            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full"
+            <a href="#" @click="navigate" class="w-full px-4 py-2 text-2xl md:rounded-md">Blog</a>
+            <a href="#" @click="navigate" class="w-full px-4 py-2 text-2xl md:rounded-md"
               >Projects</a
             >
-            <a href="#" @click="navigate" class="text-2xl py-2 px-4 md:rounded-md w-full">About</a>
+            <a href="#" @click="navigate" class="w-full px-4 py-2 text-2xl md:rounded-md">About</a>
           </div>
         </div>
       </Transition>
     </nav>
     <!-- This is the desktop view navbar -->
-    <nav class="md:flex flex-row md:space-x-8 md:pl-36 hidden">hello world</nav>
-    <!--
-    <nav class="flex flex-col md:flex-row md:space-x-8 md:pl-36">
-      <div class="md:hidden">
-        <button
-          @click="toggleMenu"
-          v-if="!isMenuOpen"
-          class="text-orange-500 text-3xl transition-all duration-300"
-        >
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-      <Transition name="slide">
-        <div
-          v-if="isMenuOpen"
-          class="fixed md:static right-0 top-0 w-1/3 md:w-auto h-full md:h-auto bg-orange-500 md:bg-transparent z-40"
-          @click.self="closeMenu"
-        >
-          <div
-            class="space-y-4 md:space-y-0 md:flex-row flex flex-col md:space-x-8 text-white md:text-orange-500 transform transition-all duration-500 z-50"
-            :class="{
-              'translate-x-0': isMenuOpen,
-              'translate-x-full': !isMenuOpen,
-            }"
-          >
-            <a
-              href="#"
-              @click="navigate"
-              class="text-2xl py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-all duration-300"
-              >Blog</a
-            >
-            <a
-              href="#"
-              @click="navigate"
-              class="text-2xl py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-all duration-300"
-              >Projects</a
-            >
-            <a
-              href="#"
-              @click="navigate"
-              class="text-2xl py-2 px-4 rounded-md hover:bg-orange-500 hover:text-white transition-all duration-300"
-              >About</a
-            >
-          </div>
-        </div>
-      </Transition>
-    </nav> -->
+    <nav class="hidden flex-row text-2xl text-orange-500 md:flex md:space-x-8 md:pl-36">
+      <a
+        href="#"
+        @click="navigate"
+        class="w-full rounded-md px-4 py-2 hover:bg-orange-500 hover:text-white"
+        >Blog</a
+      >
+      <a
+        href="#"
+        @click="navigate"
+        class="w-full rounded-md px-4 py-2 hover:bg-orange-500 hover:text-white"
+        >Projects</a
+      >
+      <a
+        href="#"
+        @click="navigate"
+        class="w-full rounded-md px-4 py-2 hover:bg-orange-500 hover:text-white"
+        >About</a
+      >
+    </nav>
   </header>
 </template>
 
