@@ -1,5 +1,6 @@
 <script setup>
 import BlogPosts from '@/components/BlogPosts.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 </script>
 
 <template>
@@ -10,14 +11,15 @@ import BlogPosts from '@/components/BlogPosts.vue'
       Bayardo <span class="text-white">López</span>
     </h1>
 
-    <nav class="flex flex-col">
+    <!-- This is the mobile view navbar -->
+    <nav class="flex flex-col md:hidden">
       <Transition name="spiral-collapse">
         <button
           @click="toggleMenu"
           v-if="!isMenuOpen"
           class="text-orange-500 text-3xl transition-all duration-300"
         >
-          <i class="fa fa-bars"></i>
+          <font-awesome-icon :icon="['fas', 'bars']" />
           <!-- Hamburger icon -->
         </button>
       </Transition>
@@ -39,6 +41,8 @@ import BlogPosts from '@/components/BlogPosts.vue'
         </div>
       </Transition>
     </nav>
+    <!-- This is the desktop view navbar -->
+    <nav class="md:flex flex-row md:space-x-8 md:pl-36 hidden">hello world</nav>
     <!--
     <nav class="flex flex-col md:flex-row md:space-x-8 md:pl-36">
       <div class="md:hidden">
@@ -93,14 +97,7 @@ export default {
   data() {
     return {
       isMenuOpen: false, // Tracks whether the menu is open or not
-      isMobile: window.innerWidth < 768, // Tailwind md breakpoint = 768px
     }
-  },
-  mounted() {
-    window.addEventListener('resize', this.checkScreen)
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.checkScreen)
   },
   methods: {
     toggleMenu() {
@@ -111,12 +108,6 @@ export default {
     },
     navigate() {
       this.isMenuOpen = false // Close the menu when a link is clicked
-    },
-    checkScreen() {
-      this.isMobile = window.innerWidth < 768
-      if (!this.isMobile) {
-        this.isMenuOpen = true // Make sure menu is open when going to desktop
-      }
     },
   },
 }
@@ -147,7 +138,7 @@ export default {
   transform: scale(0) rotate(-180deg);
 }
 .spiral-collapse-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 0.2s ease-out;
 }
 .spiral-collapse-enter-to {
   opacity: 1;
@@ -159,7 +150,7 @@ export default {
   transform: scale(1) rotate(0deg);
 }
 .spiral-collapse-leave-active {
-  transition: all 0.5s ease-in;
+  transition: all 0.2s ease-in;
 }
 .spiral-collapse-leave-to {
   opacity: 0;
