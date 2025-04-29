@@ -4,7 +4,7 @@
       <BarsButton @click="toggleMenu" v-if="!isMenuOpen" />
     </Transition>
     <Transition name="slide">
-      <SideBar v-if="isMenuOpen" @click.self="closeMenu" />
+      <SideBar v-if="isMenuOpen" @click.self="closeMenu" @navigation="closeMenu" />
     </Transition>
   </nav>
 </template>
@@ -29,9 +29,6 @@ export default {
       this.isMenuOpen = !this.isMenuOpen
     },
     closeMenu() {
-      this.isMenuOpen = false
-    },
-    navigate() {
       this.isMenuOpen = false
     },
   },
