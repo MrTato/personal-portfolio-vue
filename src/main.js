@@ -7,9 +7,9 @@ import router from './router'
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBars)
+library.add([faBars, faArrowRight])
 
 axios.defaults.baseURL = 'http://localhost:8000'
 

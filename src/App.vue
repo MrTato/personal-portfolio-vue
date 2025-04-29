@@ -7,7 +7,7 @@ import SiteLogo from '@/components/Header/SiteLogo.vue'
 
 <template>
   <header
-    class="fixed top-0 flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
+    class="flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
   >
     <SiteLogo />
 
@@ -16,7 +16,7 @@ import SiteLogo from '@/components/Header/SiteLogo.vue'
     <!-- The desktop nav bar is only visible starting on tablet devices -->
     <DesktopNavBar />
   </header>
-  <main class="mt-32 flex justify-center">
+  <main class="flex justify-center">
     <RouterView />
   </main>
 </template>
