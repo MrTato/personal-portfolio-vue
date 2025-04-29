@@ -18,7 +18,7 @@ import SiteLogo from '@/components/Header/SiteLogo.vue'
       <!-- The desktop nav bar is only visible starting on tablet devices -->
       <DesktopNavBar />
     </header>
-    <main class="mt-32 flex w-full flex-col space-y-9 md:w-3/4 lg:w-2/5">
+    <main class="mt-32 flex w-5/6 flex-col space-y-9 md:w-3/4 lg:w-2/5">
       <BlogListItem
         class="w-full border border-orange-500 bg-black"
         title="Generic title"
