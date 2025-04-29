@@ -11,25 +11,11 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
       title="Exploring the Future of Web Design"
       excerpt="Discover the trends and technologies shaping the web in the next decade. A journey into creativity and innovation."
     />
-    <div class="flex w-5/6 flex-col space-y-9 md:w-3/4 lg:w-2/5">
-      <BlogListItem
-        class="w-full border border-orange-500 bg-black"
-        title="Generic title"
-        excerpt="test data"
-        lastUpdated="2025-01-01"
-      />
-      <BlogListItem
-        class="w-full border border-orange-500 bg-black"
-        title="Generic title"
-        excerpt="test data"
-        lastUpdated="2025-01-01"
-      />
-      <BlogListItem
-        class="w-full border border-orange-500 bg-black"
-        title="Generic title"
-        excerpt="test data"
-        lastUpdated="2025-01-01"
-      />
+    <div class="mt-22 flex w-5/6 flex-col space-y-9 md:w-3/4 lg:w-2/5">
+      <h2 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Recent Posts</h2>
+      <BlogListItem title="Generic title" excerpt="test data" lastUpdated="2025-01-01" />
+      <BlogListItem title="Generic title" excerpt="test data" lastUpdated="2025-01-01" />
+      <BlogListItem title="Generic title" excerpt="test data" lastUpdated="2025-01-01" />
     </div>
   </div>
 </template>

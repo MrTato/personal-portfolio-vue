@@ -1,5 +1,8 @@
 <template>
-  <div v-if="isPublished" class="flex items-center rounded-full px-9 py-4">
+  <div
+    v-if="isPublished"
+    class="flex items-center rounded-full border border-orange-500 bg-black px-9 py-4"
+  >
     <!-- Round image -->
     <img
       class="h-16 w-16 rounded-full border-4 border-white object-cover"
