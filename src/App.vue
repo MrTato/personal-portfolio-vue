@@ -16,7 +16,7 @@ import SiteLogo from '@/components/Header/SiteLogo.vue'
     <!-- The desktop nav bar is only visible starting on tablet devices -->
     <DesktopNavBar />
   </header>
-  <main class="flex justify-center">
+  <main class="mb-40 flex justify-center">
     <RouterView />
   </main>
 </template>

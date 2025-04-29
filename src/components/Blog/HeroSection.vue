@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex h-[400px] w-screen items-center justify-center bg-cover bg-center sm:h-[500px] md:h-[600px] md:justify-start lg:w-3/5"
+    class="flex h-[400px] w-screen items-center justify-center bg-cover bg-center sm:h-[500px] md:h-[600px] md:justify-start lg:w-3/5 lg:rounded-b-4xl"
     :style="{ backgroundImage: `url(${backgroundImage})` }"
   >
     <div
@@ -9,9 +9,9 @@
       <p class="mb-2 font-mono text-xs tracking-widest text-orange-400 uppercase sm:text-sm">
         {{ date }}
       </p>
-      <h1 class="mb-4 text-2xl leading-tight font-bold text-white sm:text-3xl md:text-4xl">
+      <h2 class="mb-4 text-2xl leading-tight font-bold text-white sm:text-3xl md:text-4xl">
         {{ title }}
-      </h1>
+      </h2>
       <p class="mb-6 text-sm text-gray-300 sm:text-base">
         {{ excerpt }}
       </p>

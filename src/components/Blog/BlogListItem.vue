@@ -1,7 +1,8 @@
 <template>
-  <div
+  <RouterLink
+    :to="to"
     v-if="isPublished"
-    class="flex items-center rounded-full border border-orange-500 bg-black px-9 py-4"
+    class="flex transform items-center rounded-full border border-orange-500 bg-black px-9 py-4 transition-transform duration-300 hover:scale-105"
   >
     <!-- Round image -->
     <img
@@ -16,7 +17,7 @@
       <p class="mt-1 text-sm text-white">{{ excerpt }}</p>
       <span class="mt-2 text-xs text-gray-400">Last updated: {{ lastUpdated }}</span>
     </div>
-  </div>
+  </RouterLink>
 </template>
 
 <script>
@@ -42,6 +43,10 @@ export default {
     isPublished: {
       type: Boolean,
       default: true,
+    },
+    to: {
+      type: String,
+      default: '/',
     },
   },
 }
