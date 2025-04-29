@@ -1,8 +1,9 @@
 <script setup>
 import BlogListItem from '@/components/Blog/BlogListItem.vue'
-import BlogPosts from '@/components/BlogPosts.vue'
+import BlogPosts from '@/components/Blog/BlogPosts.vue'
 import DesktopNavBar from '@/components/Header/DesktopNavBar.vue'
 import MobileNavSideBar from '@/components/Header/MobileNavSideBar.vue'
+import SiteLogo from '@/components/Header/SiteLogo.vue'
 </script>
 
 <template>
@@ -10,10 +11,7 @@ import MobileNavSideBar from '@/components/Header/MobileNavSideBar.vue'
     <header
       class="fixed top-0 flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
     >
-      <h1 class="font-sans text-3xl text-orange-500">
-        Bayardo
-        <span class="text-white">López</span>
-      </h1>
+      <SiteLogo />
 
       <!-- The mobile nav side bar controls opening and closing the menu -->
       <MobileNavSideBar />
