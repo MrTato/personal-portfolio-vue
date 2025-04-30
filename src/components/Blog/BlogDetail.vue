@@ -21,41 +21,29 @@
       </p>
     </div>
 
-    <!-- Theme Toggle Icon -->
-    <button
-      @click="toggleContentTheme"
-      class="mb-6 transition-transform duration-300 hover:scale-110 focus:outline-none"
-      aria-label="Toggle Theme"
-    >
-      <transition name="fade" mode="out-in">
-        <font-awesome-icon
-          :key="contentTheme"
-          :icon="contentTheme === 'dark' ? ['fas', 'sun'] : ['fas', 'moon']"
-          class="text-xl"
-          :class="contentTheme === 'dark' ? 'text-orange-500' : 'text-gray-400'"
-        />
-      </transition>
-    </button>
-
     <!-- Blog Content -->
     <div
       :class="[
-        'prose max-w-none rounded-lg p-4 shadow transition-all',
+        'prose relative rounded-lg p-4 transition-all',
         contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
       ]"
     >
-      <p>{{ content }}</p>
-    </div>
-
-    <!-- Tags -->
-    <div v-if="tags.length" class="mt-6 flex flex-wrap gap-2">
-      <span
-        v-for="tag in tags"
-        :key="tag"
-        class="rounded-full bg-orange-500 px-3 py-1 text-xs tracking-widest text-black uppercase"
+      <!-- Theme Toggle Icon -->
+      <button
+        @click="toggleContentTheme"
+        class="absolute top-4 right-4 transition-transform duration-300 hover:scale-130"
+        aria-label="Toggle Theme"
       >
-        {{ tag }}
-      </span>
+        <transition name="fade" mode="out-in">
+          <font-awesome-icon
+            :key="contentTheme"
+            :icon="contentTheme === 'dark' ? ['fas', 'sun'] : ['fas', 'moon']"
+            class="text-xl"
+            :class="contentTheme === 'dark' ? 'text-orange-500' : 'text-gray-400'"
+          />
+        </transition>
+      </button>
+      <p>{{ content }}</p>
     </div>
 
     <!-- Next Post -->
@@ -68,18 +56,6 @@
         <h3 class="font-bold text-orange-400">{{ nextPost.title }}</h3>
         <p class="mt-1 text-sm text-gray-400">{{ nextPost.excerpt }}</p>
       </RouterLink>
-    </div>
-
-    <!-- Recent Posts -->
-    <div class="mt-16">
-      <h2 class="mb-4 text-2xl font-semibold text-white">Recent Posts</h2>
-      <ul class="space-y-3">
-        <li v-for="post in recentPosts" :key="post.slug">
-          <RouterLink :to="`/blog/${post.slug}`" class="text-orange-300 hover:underline">
-            {{ post.title }}
-          </RouterLink>
-        </li>
-      </ul>
     </div>
   </section>
 </template>

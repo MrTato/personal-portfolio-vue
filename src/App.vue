@@ -17,7 +17,7 @@ import FooterSection from './components/Footer/FooterSection.vue'
     <!-- The desktop nav bar is only visible starting on tablet devices -->
     <DesktopNavBar />
   </header>
-  <main class="mb-40 flex justify-center">
+  <main class="mb-20 flex justify-center">
     <RouterView />
   </main>
   <footer class="flex justify-center bg-[#181818] px-6 py-10 text-gray-300">
