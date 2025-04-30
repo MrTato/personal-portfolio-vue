@@ -19,6 +19,7 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
         :title="post.title"
         :excerpt="getExcerpt(post.content)"
         :lastUpdated="post.updated_at.split('T')[0]"
+        :to="`/blog/${post.slug}`"
       />
     </div>
   </div>
