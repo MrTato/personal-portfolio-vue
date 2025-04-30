@@ -3,9 +3,6 @@ import BlogDetail from '@/components/Blog/BlogDetail.vue'
 </script>
 
 <template>
-  <!-- <div class="mt-10 flex w-5/6 flex-col space-y-9 md:w-3/4 lg:w-2/5"> -->
-
-  <!-- </div> -->
   <BlogDetail />
 </template>
 
