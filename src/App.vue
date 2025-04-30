@@ -3,6 +3,7 @@ import { RouterView } from 'vue-router'
 import DesktopNavBar from '@/components/Header/DesktopNavBar.vue'
 import MobileNavSideBar from '@/components/Header/MobileNavSideBar.vue'
 import SiteLogo from '@/components/Header/SiteLogo.vue'
+import FooterSection from './components/Footer/FooterSection.vue'
 </script>
 
 <template>
@@ -19,6 +20,9 @@ import SiteLogo from '@/components/Header/SiteLogo.vue'
   <main class="mb-40 flex justify-center">
     <RouterView />
   </main>
+  <footer class="flex justify-center bg-[#181818] px-6 py-10 text-gray-300">
+    <FooterSection />
+  </footer>
 </template>
 
 <style scoped></style>
