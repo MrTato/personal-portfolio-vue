@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BlogView from '@/views/BlogView.vue'
-import BlogDetail from '@/components/Blog/BlogDetail.vue'
+import BlogDetailView from '@/views/BlogDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: '/blog/:slug', // dynamic route
       name: 'blog-detail',
-      component: BlogDetail,
+      component: BlogDetailView,
       props: true, // passes `slug` as a prop
     },
     // {

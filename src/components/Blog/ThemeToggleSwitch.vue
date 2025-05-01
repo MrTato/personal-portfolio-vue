@@ -1,15 +1,18 @@
 <template>
   <!-- Theme Toggle Switch -->
-  <div class="absolute top-6 right-6 flex flex-col items-center space-y-2">
+  <div class="absolute top-6 right-6 flex flex-col items-center">
     <!-- Switch Button -->
     <button
       @click="emitToggle"
-      class="relative h-10 w-32 overflow-hidden rounded-full bg-gray-800 shadow-inner focus:outline-none"
+      class="relative h-8 w-28 cursor-pointer rounded-full"
+      :class="
+        contentTheme === 'dark' ? 'bg-[#181818] text-orange-500' : 'bg-orange-500 text-[#181818]'
+      "
     >
       <!-- Slider -->
       <span
-        class="absolute left-0 z-10 h-full w-1/2 transform content-center rounded-full bg-orange-500 shadow-md transition-all duration-300 ease-in-out"
-        :class="contentTheme === 'dark' ? 'translate-x-16' : 'translate-x-0'"
+        class="absolute left-0 z-10 h-full w-1/2 transform content-center rounded-full bg-gray-800 transition-all duration-300 ease-in-out"
+        :class="contentTheme === 'dark' ? 'translate-x-full' : 'translate-x-0'"
         ><!-- Icon (on top of the switch) -->
         <transition name="fade" mode="out-in">
           <font-awesome-icon
@@ -22,7 +25,7 @@
 
       <!-- Labels -->
       <div
-        class="flex h-full items-center justify-between px-4 text-xs font-semibold tracking-wider text-white uppercase"
+        class="flex h-full items-center justify-between px-4 text-xs font-semibold tracking-wider uppercase"
       >
         <span
           :class="contentTheme === 'dark' ? 'opacity-100' : 'opacity-0'"
