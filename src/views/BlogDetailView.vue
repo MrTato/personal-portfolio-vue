@@ -6,7 +6,7 @@ import Prism from 'prismjs'
 
 <template>
   <!-- <BlogDetail /> -->
-  <section class="mx-auto max-w-4xl px-4 py-8">
+  <section class="mx-auto mb-20 max-w-4xl px-4 py-8">
     <!-- Cover Image -->
     <img
       v-if="coverImage"
