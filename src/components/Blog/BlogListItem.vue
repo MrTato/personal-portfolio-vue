@@ -2,7 +2,7 @@
   <RouterLink
     :to="to"
     v-if="isPublished"
-    class="flex h-32 transform items-center rounded-md border-l-5 border-orange-500 bg-black px-9 py-4 transition-all duration-300 hover:scale-105 hover:bg-zinc-900"
+    class="flex h-32 transform items-center rounded-md border-l-5 border-orange-500 bg-[#111] p-4 transition-all duration-300 hover:scale-105 hover:bg-[#1a1a1a]"
   >
     <!-- Round image -->
     <img
@@ -13,9 +13,9 @@
 
     <!-- Text content -->
     <div class="mx-4 flex w-5/6 flex-col">
-      <h2 class="text-xl font-bold text-orange-500">{{ title }}</h2>
+      <h2 class="text-xl font-bold text-orange-400">{{ title }}</h2>
       <p class="mt-1 line-clamp-2 text-sm text-ellipsis text-white">{{ excerpt }}</p>
-      <span class="mt-1 text-xs text-gray-400">Last updated: {{ lastUpdated }}</span>
+      <span class="mt-1 font-mono text-xs text-gray-400">Last updated: {{ lastUpdated }}</span>
     </div>
   </RouterLink>
 </template>
