@@ -34,12 +34,15 @@ import 'prismjs/themes/prism-tomorrow.css' // or any theme you like
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-python'
+import DOMPurify from 'dompurify'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
 app.config.globalProperties.$axios = axios
+
+app.config.globalProperties.$sanitize = DOMPurify.sanitize
 
 app.use(router)
 

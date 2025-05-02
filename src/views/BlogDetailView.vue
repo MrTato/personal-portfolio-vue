@@ -96,7 +96,7 @@ export default {
   },
   computed: {
     markedContent() {
-      return marked.parse(this.content)
+      return this.$sanitize(marked.parse(this.content))
     },
   },
   created() {
