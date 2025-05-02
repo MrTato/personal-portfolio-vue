@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BlogView from '@/views/BlogView.vue'
 import BlogDetailView from '@/views/BlogDetailView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,7 @@ const router = createRouter({
       component: BlogDetailView,
       props: true, // passes `slug` as a prop
     },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
     // {
     //   path: '/about',
     //   name: 'about',
