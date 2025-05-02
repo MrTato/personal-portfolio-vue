@@ -36,7 +36,7 @@ import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-python'
 import DOMPurify from 'dompurify'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 

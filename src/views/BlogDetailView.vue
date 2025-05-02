@@ -96,7 +96,9 @@ export default {
   },
   computed: {
     markedContent() {
-      return this.$sanitize(marked.parse(this.content))
+      const sanitized = this.$sanitize(marked.parse(this.content))
+
+      return sanitized.replace(/src="\/media\//g, `src="${import.meta.env.VITE_API_URL}/media/`)
     },
   },
   created() {
