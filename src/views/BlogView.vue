@@ -15,7 +15,7 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
       <h2 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Posts</h2>
       <BlogListItem
         v-for="post in posts"
-        :key="post.id"
+        :key="post.slug"
         :title="post.title"
         :excerpt="post.content"
         :lastUpdated="post.updated_at.split('T')[0]"
