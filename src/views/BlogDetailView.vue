@@ -1,6 +1,7 @@
 <script setup>
 import ThemeToggleSwitch from '@/components/Blog/ThemeToggleSwitch.vue'
 import { marked } from 'marked'
+import Prism from 'prismjs'
 </script>
 
 <template>
@@ -30,12 +31,14 @@ import { marked } from 'marked'
     <!-- Blog Content -->
     <div
       :class="[
-        'relative rounded-lg p-20 text-justify transition-all',
+        'relative rounded-lg px-8 py-15 text-justify transition-all md:p-20',
         contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
       ]"
     >
       <ThemeToggleSwitch :contentTheme="contentTheme" @toggle-theme="toggleContentTheme" />
-      <div class="bjls-content" v-html="markedContent"></div>
+      <div class="max-w-full overflow-x-hidden">
+        <div class="bjls-content" v-html="markedContent"></div>
+      </div>
     </div>
 
     <!-- Next Post -->
@@ -98,6 +101,16 @@ export default {
   },
   created() {
     this.getData()
+  },
+  mounted() {
+    this.$nextTick(() => {
+      Prism.highlightAll()
+    })
+  },
+  updated() {
+    this.$nextTick(() => {
+      Prism.highlightAll()
+    })
   },
 }
 </script>

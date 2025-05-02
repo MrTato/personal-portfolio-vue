@@ -29,6 +29,11 @@ library.add([
   faVuejs,
 ])
 import 'firacode'
+import 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css' // or any theme you like
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-python'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 

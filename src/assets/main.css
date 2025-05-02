@@ -28,7 +28,7 @@ body {
   font-weight: 600; /* Semi-bold */
   margin-top: 2rem;
   margin-bottom: 1rem;
-  border-left: 4px solid #f97316; /* Tailwind's gray-400 */
+  border-left: 4px solid #f97316; /* Tailwind's orange-500 */
   padding-left: 0.75rem;
 }
 
@@ -132,16 +132,91 @@ h6 {
   box-decoration-break: clone;
 }
 
-/* .bjls-content pre code.language-js {
+.bjls-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  background-color: #1f1f1f; /* dark background */
+}
+
+.bjls-content thead {
+  background-color: #2c2c2c;
+}
+
+.bjls-content thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #f1f1f1;
+  border-bottom: 1px solid #444;
+}
+
+.bjls-content tbody tr {
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+}
+
+.bjls-content tbody tr:hover {
+  background-color: #2a2a2a;
+}
+
+.bjls-content td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #333;
+  vertical-align: top;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.bjls-content th,
+.bjls-content td {
+  border-right: 1px solid #333;
+}
+
+.bjls-content th:last-child,
+.bjls-content td:last-child {
+  border-right: none;
+}
+
+.bjls-content blockquote {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 1.5em 2em 0.1em 1.5em;
+  border-left: 4px solid #f97316; /* Tailwind orange-500 */
+  background-color: rgba(148, 163, 184, 0.1); /* subtle background */
   font-family: 'Fira Code', 'Courier New', monospace;
-  color: #dcdcdc;
-  background-color: #1f2937;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  display: block;
-  white-space: pre;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin: 1.5rem 0;
-} */
+  border-radius: 6px;
+}
+
+.bjls-content blockquote::before {
+  content: '“';
+  position: absolute;
+  font-size: 3rem;
+  line-height: 1;
+  color: #f97316;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.bjls-content ul:has(input[type='checkbox']) {
+  list-style: none;
+}
+
+.bjls-content ul input[type='checkbox'] {
+  appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid #888;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+.bjls-content ul input[type='checkbox']:checked:disabled {
+  background-color: #f97316;
+  border-color: #f97316;
+}
