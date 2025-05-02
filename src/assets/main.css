@@ -237,3 +237,34 @@ h6 {
   padding-bottom: 0.5em;
   border-bottom: 2px solid #f97316;
 }
+
+.bjls-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.bjls-content img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bjls-content a {
+  color: #3b82f6; /* Tailwind's blue-500 */
+  text-decoration: none;
+  border-bottom: 1px inset #3b82f6;
+  transition:
+    color 0.3s ease,
+    border-bottom-color 0.3s ease;
+}
+
+.bjls-content a:hover {
+  color: #2563eb; /* Tailwind's blue-600 */
+  border-bottom-color: #2563eb;
+}
