@@ -2,10 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import BlogView from '@/views/BlogView.vue'
 import BlogDetailView from '@/views/BlogDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import MaintenanceView from '@/views/MaintenanceView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/',
+      name: 'home',
+      redirect: '/blog',
+    },
     {
       path: '/blog',
       name: 'blog',
@@ -16,6 +22,26 @@ const router = createRouter({
       name: 'blog-detail',
       component: BlogDetailView,
       props: true, // passes `slug` as a prop
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: MaintenanceView,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: MaintenanceView,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: MaintenanceView,
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: MaintenanceView,
     },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
     // {

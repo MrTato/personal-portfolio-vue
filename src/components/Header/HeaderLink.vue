@@ -1,7 +1,7 @@
 <template>
   <RouterLink
     :to="to"
-    class="w-full rounded-md px-4 py-2 md:hover:bg-orange-500 md:hover:text-white"
+    class="w-full rounded-lg px-4 py-2 transition-colors duration-300 md:hover:bg-orange-500 md:hover:text-white"
   >
     <slot></slot>
   </RouterLink>

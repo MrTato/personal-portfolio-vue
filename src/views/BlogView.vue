@@ -12,7 +12,7 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
       excerpt="Discover the trends and technologies shaping the web in the next decade. A journey into creativity and innovation."
     />
     <div class="mt-10 flex w-5/6 flex-col space-y-6 md:w-3/4 lg:w-2/5">
-      <h2 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Recent Posts</h2>
+      <h2 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Posts</h2>
       <BlogListItem
         v-for="post in posts"
         :key="post.id"
