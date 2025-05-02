@@ -6,24 +6,35 @@ body {
 }
 
 /* Used for styling post content */
-.bjls-content h1 {
+.bjls-content h1::before {
+  content: 'DO NOT USE h1 elements. Use the blog post title instead';
+  position: absolute;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: bold;
+  color: red;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.bjls-content h2 {
   margin-top: 4rem;
   margin-bottom: 2rem;
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
   text-align: left;
 }
 
-.bjls-content h2 {
+.bjls-content h3 {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   font-size: 1.75rem;
   font-weight: 600;
   border-bottom: 2px solid #f97316; /* Tailwind's orange-500 */
   padding-bottom: 0.5rem;
+  text-align: left;
 }
 
-.bjls-content h3 {
+.bjls-content h4 {
   font-size: 1.25rem; /* Equivalent to text-xl */
   font-weight: 600; /* Semi-bold */
   margin-top: 2rem;
@@ -32,7 +43,7 @@ body {
   padding-left: 0.75rem;
 }
 
-.bjls-content h4 {
+.bjls-content h5 {
   font-size: 1.125rem; /* Equivalent to text-lg */
   font-weight: 600; /* Semi-bold */
   margin-top: 1.5rem;
@@ -40,21 +51,12 @@ body {
   letter-spacing: 0.05em; /* Slight tracking for emphasis */
 }
 
-.bjls-content h5 {
+.bjls-content h6 {
   font-size: 1rem; /* Equivalent to text-base */
   font-weight: 600; /* Semi-bold */
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
   letter-spacing: 0.04em;
-}
-
-h6 {
-  font-size: 0.875rem; /* Equivalent to text-sm */
-  font-weight: 500; /* Medium */
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
 }
 
 .bjls-content p {
@@ -69,7 +71,7 @@ h6 {
   border-top: 2px solid;
   border-color: oklch(70.5% 0.213 47.604);
   margin: 3rem auto;
-  width: 50%;
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -77,20 +79,6 @@ h6 {
   margin-bottom: 1.5rem; /* Adds space below each paragraph */
   font-size: 1rem; /* Base font size */
   line-height: 1.75; /* Increases line height for better readability */
-}
-
-@media (min-width: 640px) {
-  .bjls-content p {
-    font-size: 1.125rem; /* Slightly larger text on small screens and up */
-  }
-
-  .bjls-content ol li {
-    font-size: 1.125rem; /* Slightly larger text on small screens and up */
-  }
-
-  .bjls-content ul li {
-    font-size: 1.125rem; /* Slightly larger text on small screens and up */
-  }
 }
 
 .bjls-content ol {
@@ -127,8 +115,8 @@ h6 {
   color: #f97316; /* Tailwind's orange-400 */
   padding: 0.2em 0.4em;
   border-radius: 4px;
-  white-space: pre-wrap;
-  word-break: break-word;
+  white-space: pre-wrap !important;
+  word-break: normal;
   box-decoration-break: clone;
 }
 
@@ -138,6 +126,7 @@ h6 {
   margin: 2rem 0;
   font-size: 0.95rem;
   background-color: #1f1f1f; /* dark background */
+  overflow: hidden;
 }
 
 .bjls-content thead {
@@ -267,4 +256,18 @@ h6 {
 .bjls-content a:hover {
   color: #2563eb; /* Tailwind's blue-600 */
   border-bottom-color: #2563eb;
+}
+
+@media (min-width: 640px) {
+  .bjls-content p {
+    font-size: 1.125rem; /* Slightly larger text on small screens and up */
+  }
+
+  .bjls-content ol li {
+    font-size: 1.125rem; /* Slightly larger text on small screens and up */
+  }
+
+  .bjls-content ul li {
+    font-size: 1.125rem; /* Slightly larger text on small screens and up */
+  }
 }

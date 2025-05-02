@@ -18,7 +18,7 @@ import Prism from 'prismjs'
     <!-- Title and Metadata -->
     <div class="mb-6">
       <h1
-        class="mb-2 flex h-16 content-center items-center justify-between bg-orange-500 pr-8 pl-3 text-4xl font-bold text-white"
+        class="mb-2 flex h-16 content-center items-center justify-between bg-orange-500 pr-8 pl-3 text-3xl font-bold text-white md:text-4xl"
       >
         <span>{{ title }}</span
         ><span><font-awesome-icon :icon="['fab', 'vuejs']" /></span>
@@ -31,12 +31,12 @@ import Prism from 'prismjs'
     <!-- Blog Content -->
     <div
       :class="[
-        'relative rounded-lg px-8 py-15 text-justify transition-all md:p-20',
+        'relative rounded-lg px-8 py-20 text-justify transition-all md:p-20',
         contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
       ]"
     >
       <ThemeToggleSwitch :contentTheme="contentTheme" @toggle-theme="toggleContentTheme" />
-      <div class="max-w-full overflow-x-hidden">
+      <div class="max-w-fit overflow-x-clip">
         <div class="bjls-content" v-html="markedContent"></div>
       </div>
     </div>
@@ -98,7 +98,15 @@ export default {
     markedContent() {
       const sanitized = this.$sanitize(marked.parse(this.content))
 
-      return sanitized.replace(/src="\/media\//g, `src="${import.meta.env.VITE_API_URL}/media/`)
+      // Wrap each <table> element with a div wrapper to avoid tables overflowing on mobile view
+      const wrappedHtml = sanitized
+        .replace(/<table(.*?)>/g, (match) => {
+          return `<div class="overflow-auto w-66 md:w-full">${match}`
+        })
+        .replace(/<\/table>/g, '</table></div>')
+
+      // repairs image urls served from api
+      return wrappedHtml.replace(/src="\/media\//g, `src="${import.meta.env.VITE_API_URL}/media/`)
     },
   },
   created() {
