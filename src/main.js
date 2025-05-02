@@ -28,6 +28,7 @@ library.add([
   faSun,
   faVuejs,
 ])
+import 'firacode'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 
