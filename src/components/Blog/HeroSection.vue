@@ -30,7 +30,7 @@
           </p>
 
           <RouterLink
-            :to="slide.slug"
+            :to="`/blog/${slide.slug}`"
             class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2 text-sm font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-xl active:scale-95"
           >
             Read Full Post

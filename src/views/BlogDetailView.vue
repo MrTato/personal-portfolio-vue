@@ -20,8 +20,9 @@ import Prism from 'prismjs'
       <h1
         class="mb-2 flex h-16 content-center items-center justify-between bg-orange-500 pr-8 pl-3 text-3xl font-bold text-white md:text-4xl"
       >
-        <span>{{ title }}</span
-        ><span><font-awesome-icon :icon="['fab', 'vuejs']" /></span>
+        <span>{{ title }}</span>
+        <!-- TODO: Add a logo to the model so that you can have logos in the title
+        <span><font-awesome-icon :icon="['fab', 'vuejs']" /></span> -->
       </h1>
       <p class="text-sm text-gray-400">
         By <span class="font-medium text-white">{{ author }}</span> • {{ date }}
@@ -85,6 +86,7 @@ export default {
         this.title = response.data.title
         this.date = response.data.updated_at.split('T')[0]
         this.content = response.data.content
+        this.coverImage = response.data.cover_image
         console.log(response.data.content)
       } catch (error) {
         console.log(error)
