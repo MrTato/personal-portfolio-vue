@@ -5,14 +5,9 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
 
 <template>
   <div class="mb-20 flex w-full flex-col items-center">
-    <HeroSection
-      backgroundImage="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-      date="APR 27, 2025"
-      title="Exploring the Future of Web Design"
-      excerpt="Discover the trends and technologies shaping the web in the next decade. A journey into creativity and innovation."
-    />
+    <HeroSection :slides="slides" v-if="slides.length > 0" />
     <div class="mt-10 flex w-5/6 flex-col space-y-6 md:w-3/4 lg:w-2/5">
-      <h2 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Posts</h2>
+      <h1 class="mb-8 pl-3 text-3xl font-semibold text-gray-100">Posts</h1>
       <BlogListItem
         v-for="post in posts"
         :key="post.slug"
@@ -29,6 +24,7 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
 export default {
   data() {
     return {
+      slides: [],
       posts: [],
     }
   },
@@ -36,6 +32,7 @@ export default {
     async getData() {
       try {
         const response = await this.$axios.get('/blog-posts/')
+        this.slides = response.data.filter((post) => post.spotlight)
         this.posts = response.data
       } catch (error) {
         console.log(error)

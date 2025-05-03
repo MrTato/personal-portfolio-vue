@@ -14,23 +14,23 @@
         v-for="(slide, index) in circularSlides"
         :key="index"
         class="flex h-full min-w-full items-center justify-center bg-cover bg-center md:justify-start"
-        :style="{ backgroundImage: `url(${slide.backgroundImage})` }"
+        :style="{ backgroundImage: `url(${slide.cover_image})` }"
       >
         <div
-          class="bg-opacity-70 mx-4 max-w-full rounded-lg bg-black p-6 shadow-2xl backdrop-blur-md sm:mx-8 sm:max-w-md sm:p-8 md:ml-16"
+          class="bg-opacity-70 mx-4 max-w-80 rounded-lg bg-black p-6 shadow-2xl backdrop-blur-md sm:mx-8 sm:max-w-md sm:p-8 md:ml-16"
         >
           <p class="mb-2 font-mono text-xs tracking-widest text-orange-400 uppercase sm:text-sm">
-            {{ slide.date }}
+            {{ slide.updated_at }}
           </p>
           <h2 class="mb-4 text-2xl leading-tight font-bold text-white sm:text-3xl md:text-4xl">
             {{ slide.title }}
           </h2>
-          <p class="mb-6 text-sm text-gray-300 sm:text-base">
-            {{ slide.excerpt }}
+          <p class="mb-6 line-clamp-3 text-sm text-ellipsis text-gray-300 sm:text-base">
+            {{ slide.description }}
           </p>
 
           <RouterLink
-            :to="slide.link"
+            :to="slide.slug"
             class="group inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-2 text-sm font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-orange-600 hover:shadow-xl active:scale-95"
           >
             Read Full Post
@@ -44,13 +44,16 @@
     </div>
 
     <!-- Navigation Dots -->
-    <div class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+    <div
+      v-if="this.slides.length > 1"
+      class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-4"
+    >
       <button
         v-for="(slide, index) in slides"
         :key="index"
         @click="goToSlide(index)"
         :class="[
-          'h-3 w-3 rounded-full transition-all duration-300',
+          'h-4 w-4 rounded-full transition-all duration-300',
           currentIndex === index
             ? 'scale-110 bg-orange-500'
             : 'bg-gray-400 hover:scale-110 hover:bg-orange-500',
@@ -62,47 +65,40 @@
 
 <script>
 export default {
-  name: 'HeroGallery',
+  props: {
+    slides: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       currentIndex: 0,
       interval: null,
       areTransitionsOn: true,
-      slides: [
-        {
-          backgroundImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
-          date: 'April 30, 2025',
-          title: 'Vue 3 Composition API Mastery',
-          excerpt: 'Learn how to harness the power of Vue 3 with real-world examples.',
-          link: '/blog/vue-composition-api',
-        },
-        {
-          backgroundImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
-          date: 'May 1, 2025',
-          title: 'CSS Grid Layouts for Developers',
-          excerpt: 'Explore complex layouts made easy with modern CSS Grid tricks.',
-          link: '/blog/css-grid-layouts',
-        },
-        {
-          backgroundImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
-          date: 'May 2, 2025',
-          title: 'TailwindCSS Tips and Tricks',
-          excerpt: 'Style your app with elegance and efficiency using Tailwind.',
-          link: '/blog/tailwind-tips',
-        },
-      ],
     }
   },
   computed: {
     circularSlides() {
-      return [...this.slides, this.slides[0]]
+      if (this.slides.length > 0) {
+        const correctDateSlides = this.slides.map((slide) => ({
+          ...slide,
+          updated_at: slide.updated_at.split('T')[0], // keep only the date part
+        }))
+        return [...correctDateSlides, correctDateSlides[0]]
+      }
+      return []
     },
   },
   mounted() {
-    this.startAutoSlide()
+    if (this.slides.length > 1) {
+      this.startAutoSlide()
+    }
   },
   beforeUnmount() {
-    clearInterval(this.interval)
+    if (this.slides.length > 1) {
+      clearInterval(this.interval)
+    }
   },
   methods: {
     goToSlide(index) {
