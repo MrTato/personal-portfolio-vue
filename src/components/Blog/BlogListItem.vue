@@ -6,7 +6,7 @@
   >
     <!-- Round image -->
     <img
-      class="hidden h-16 w-16 rounded-full border-4 border-white object-cover sm:block"
+      class="hidden h-16 w-16 rounded-full object-cover sm:block"
       :src="imageUrl"
       alt="Blog Thumbnail"
     />

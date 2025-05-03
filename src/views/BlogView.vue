@@ -12,8 +12,9 @@ import HeroSection from '@/components/Blog/HeroSection.vue'
         v-for="post in posts"
         :key="post.slug"
         :title="post.title"
-        :excerpt="post.content"
+        :excerpt="post.description"
         :lastUpdated="post.updated_at.split('T')[0]"
+        :image-url="post.preview_image"
         :to="`/blog/${post.slug}`"
       />
     </div>
