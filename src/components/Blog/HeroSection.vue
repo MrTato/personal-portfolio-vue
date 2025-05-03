@@ -4,11 +4,14 @@
   >
     <!-- Slides -->
     <div
-      class="flex h-full transition-transform duration-700 ease-in-out"
+      class="flex h-full"
+      :class="{
+        'transition-transform duration-700 ease-in-out': areTransitionsOn,
+      }"
       :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
     >
       <div
-        v-for="(slide, index) in slides"
+        v-for="(slide, index) in circularSlides"
         :key="index"
         class="flex h-full min-w-full items-center justify-center bg-cover bg-center md:justify-start"
         :style="{ backgroundImage: `url(${slide.backgroundImage})` }"
@@ -48,7 +51,9 @@
         @click="goToSlide(index)"
         :class="[
           'h-3 w-3 rounded-full transition-all duration-300',
-          currentIndex === index ? 'scale-110 bg-orange-500' : 'bg-gray-400 hover:bg-orange-300',
+          currentIndex === index
+            ? 'scale-110 bg-orange-500'
+            : 'bg-gray-400 hover:scale-110 hover:bg-orange-500',
         ]"
       />
     </div>
@@ -62,6 +67,7 @@ export default {
     return {
       currentIndex: 0,
       interval: null,
+      areTransitionsOn: true,
       slides: [
         {
           backgroundImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e',
@@ -87,6 +93,11 @@ export default {
       ],
     }
   },
+  computed: {
+    circularSlides() {
+      return [...this.slides, this.slides[0]]
+    },
+  },
   mounted() {
     this.startAutoSlide()
   },
@@ -95,17 +106,21 @@ export default {
   },
   methods: {
     goToSlide(index) {
+      this.areTransitionsOn = true
       this.currentIndex = index
-      this.resetAutoSlide()
+      clearInterval(this.interval)
     },
     startAutoSlide() {
       this.interval = setInterval(() => {
-        this.currentIndex = (this.currentIndex + 1) % this.slides.length
+        this.areTransitionsOn = true
+        this.currentIndex++
+        if (this.currentIndex === this.circularSlides.length - 1) {
+          setTimeout(() => {
+            this.areTransitionsOn = false
+            this.currentIndex = 0
+          }, 700)
+        }
       }, 5000)
-    },
-    resetAutoSlide() {
-      clearInterval(this.interval)
-      this.startAutoSlide()
     },
   },
 }
