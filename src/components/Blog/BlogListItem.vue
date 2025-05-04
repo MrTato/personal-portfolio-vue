@@ -2,7 +2,7 @@
   <RouterLink
     :to="to"
     v-if="isPublished"
-    class="flex h-32 transform items-center rounded-md border-l-5 border-orange-500 bg-[#111] p-4 transition-all duration-300 hover:scale-105 hover:bg-[#1a1a1a]"
+    class="flex min-h-fit transform items-center rounded-md border-l-5 border-orange-500 bg-[#111] p-4 transition-all duration-300 hover:scale-105 hover:bg-[#1a1a1a]"
   >
     <!-- Round image -->
     <img

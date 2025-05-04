@@ -53,6 +53,15 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue'),
     // },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      // Use browser's saved position (e.g., back/forward)
+      return savedPosition
+    } else {
+      // Scroll to top
+      return { top: 0 }
+    }
+  },
 })
 
 export default router

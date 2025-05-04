@@ -18,7 +18,7 @@ import Prism from 'prismjs'
     <!-- Title and Metadata -->
     <div class="mb-6">
       <h1
-        class="mb-2 flex h-16 content-center items-center justify-between bg-orange-500 pr-8 pl-3 text-3xl font-bold text-white md:text-4xl"
+        class="mb-2 flex min-h-fit content-center items-center justify-between bg-orange-500 py-2 pr-8 pl-3 text-2xl font-bold text-white md:text-4xl"
       >
         <span>{{ title }}</span>
         <!-- TODO: Add a logo to the model so that you can have logos in the title
