@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BlogView from '@/views/BlogView.vue'
 import BlogDetailView from '@/views/BlogDetailView.vue'
-import NotFoundView from '@/views/NotFoundView.vue'
-import MaintenanceView from '@/views/MaintenanceView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,24 +24,28 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'projects',
-      component: MaintenanceView,
+      component: () => import('@/views/MaintenanceView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
-      component: MaintenanceView,
+      component: () => import('@/views/MaintenanceView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      component: MaintenanceView,
+      component: () => import('@/views/MaintenanceView.vue'),
     },
     {
       path: '/services',
       name: 'services',
-      component: MaintenanceView,
+      component: () => import('@/views/MaintenanceView.vue'),
     },
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundView },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('@/views/NotFoundView.vue'),
+    },
     // {
     //   path: '/about',
     //   name: 'about',
