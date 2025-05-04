@@ -43,7 +43,8 @@ import Prism from 'prismjs'
     </div>
 
     <!-- Next Post -->
-    <div v-if="nextPost" class="mt-12">
+    <!-- TODO: Implement Up Next component -->
+    <!-- <div v-if="nextPost" class="mt-12">
       <h2 class="mb-2 text-xl font-semibold text-white">Up Next</h2>
       <RouterLink
         :to="`/blog/${nextPost.slug}`"
@@ -52,7 +53,7 @@ import Prism from 'prismjs'
         <h3 class="font-bold text-orange-400">{{ nextPost.title }}</h3>
         <p class="mt-1 text-sm text-gray-400">{{ nextPost.excerpt }}</p>
       </RouterLink>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -69,14 +70,14 @@ export default {
       title: '',
       author: 'Bayardo López',
       date: '',
-      coverImage: 'https://placehold.co/1200x500',
+      coverImage: '',
       content: ``,
       contentTheme: 'dark',
-      nextPost: {
-        title: 'Why Composition API Matters',
-        excerpt: 'Learn why Vue’s Composition API is a game changer...',
-        slug: 'composition-api-matters',
-      },
+      // nextPost: {
+      //   title: 'Why Composition API Matters',
+      //   excerpt: 'Learn why Vue’s Composition API is a game changer...',
+      //   slug: 'composition-api-matters',
+      // },
     }
   },
   methods: {
