@@ -34,6 +34,8 @@ import 'prismjs/themes/prism-tomorrow.css' // or any theme you like
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-python'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-css'
 import DOMPurify from 'dompurify'
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL

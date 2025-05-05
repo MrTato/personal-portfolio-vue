@@ -6,13 +6,13 @@ import Prism from 'prismjs'
 
 <template>
   <!-- <BlogDetail /> -->
-  <section class="mx-auto mb-20 max-w-4xl px-4 py-8">
+  <section class="mx-auto mb-20 max-w-4xl md:my-8">
     <!-- Cover Image -->
     <img
       v-if="coverImage"
       :src="coverImage"
       alt="Cover Image"
-      class="mb-6 h-auto w-full rounded-xl"
+      class="mb-6 h-auto w-full md:rounded-xl"
     />
 
     <!-- Title and Metadata -->
@@ -32,7 +32,7 @@ import Prism from 'prismjs'
     <!-- Blog Content -->
     <div
       :class="[
-        'relative rounded-lg px-8 py-20 text-justify transition-all md:p-20',
+        'relative rounded-lg px-8 pt-5 pb-15 text-justify transition-all md:px-20',
         contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
       ]"
     >
