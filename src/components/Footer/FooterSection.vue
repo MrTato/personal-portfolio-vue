@@ -44,7 +44,7 @@
           <font-awesome-icon :icon="['fab', 'linkedin']" />
         </a>
         <a
-          href="mailto:bjlslopez@gmail.com"
+          href="mailto:developer@bayardolopez.com"
           target="_blank"
           rel="noopener noreferrer"
           class="transition-transform duration-300 hover:scale-120 hover:text-red-500"
@@ -57,12 +57,12 @@
     <!-- Contact CTA -->
     <div class="md:col-span-1">
       <h3 class="mb-2 text-xl font-bold text-white">Let’s work together</h3>
-      <RouterLink
-        to="/contact"
+      <a
+        href="mailto:developer@bayardolopez.com"
         class="mt-2 inline-block rounded border border-orange-500 px-4 py-2 text-orange-500 transition hover:bg-orange-500 hover:text-black"
       >
         Get in Touch
-      </RouterLink>
+      </a>
     </div>
 
     <!-- Full Width Section -->
