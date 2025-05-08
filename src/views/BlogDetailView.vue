@@ -21,8 +21,6 @@ import Prism from 'prismjs'
         class="mb-2 flex min-h-fit content-center items-center justify-between bg-orange-500 py-2 pr-8 pl-3 text-2xl font-bold text-white md:text-4xl"
       >
         <span>{{ title }}</span>
-        <!-- TODO: Add a logo to the model so that you can have logos in the title
-        <span><font-awesome-icon :icon="['fab', 'vuejs']" /></span> -->
       </h1>
       <p class="text-sm text-gray-400">
         By <span class="font-medium text-white">{{ author }}</span> • {{ date }}
@@ -101,11 +99,18 @@ export default {
       const sanitized = this.$sanitize(marked.parse(this.content))
 
       // Wrap each <table> element with a div wrapper to avoid tables overflowing on mobile view
-      const wrappedHtml = sanitized
+      let wrappedHtml = sanitized
         .replace(/<table(.*?)>/g, (match) => {
           return `<div class="overflow-auto w-66 md:w-full">${match}`
         })
         .replace(/<\/table>/g, '</table></div>')
+
+      // Wrap each <pre> element with a div wrapper to avoid code blocks overflowing on mobile view
+      wrappedHtml = wrappedHtml
+        .replace(/<pre(.*?)>/g, (match) => {
+          return `<div class="overflow-auto w-74 md:w-full">${match}`
+        })
+        .replace(/<\/pre>/g, '</pre></div>')
 
       // repairs image urls served from api
       return wrappedHtml.replace(/src="\/media\//g, `src="${import.meta.env.VITE_API_URL}/media/`)
