@@ -8,6 +8,9 @@ export default defineConfig([
   {
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
+    rules: {
+      'no-console': 'warn',
+    },
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),

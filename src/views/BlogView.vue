@@ -36,7 +36,7 @@ export default {
         this.slides = response.data.filter((post) => post.spotlight)
         this.posts = response.data
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     },
   },

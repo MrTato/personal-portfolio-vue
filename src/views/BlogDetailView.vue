@@ -88,9 +88,8 @@ export default {
         this.date = response.data.updated_at.split('T')[0]
         this.content = response.data.content
         this.coverImage = response.data.cover_image
-        console.log(response.data.content)
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     },
     toggleContentTheme() {
