@@ -1,6 +1,7 @@
 <script setup>
 import BlogListItem from '@/components/Blog/BlogListItem.vue'
 import HeroSection from '@/components/Blog/HeroSection.vue'
+import * as Sentry from '@sentry/vue'
 </script>
 
 <template>
@@ -36,7 +37,12 @@ export default {
         this.slides = response.data.filter((post) => post.spotlight)
         this.posts = response.data
       } catch (error) {
-        console.error(error)
+        if (import.meta.env.MODE === 'development') {
+          // eslint-disable-next-line no-console
+          console.error(error)
+        } else {
+          Sentry.captureException(new Error(error))
+        }
       }
     },
   },

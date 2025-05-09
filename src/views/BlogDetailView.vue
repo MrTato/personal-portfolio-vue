@@ -2,6 +2,7 @@
 import ThemeToggleSwitch from '@/components/Blog/ThemeToggleSwitch.vue'
 import { marked } from 'marked'
 import Prism from 'prismjs'
+import * as Sentry from '@sentry/vue'
 </script>
 
 <template>
@@ -87,7 +88,12 @@ export default {
         this.content = response.data.content
         this.coverImage = response.data.cover_image
       } catch (error) {
-        console.error(error)
+        if (import.meta.env.MODE === 'development') {
+          // eslint-disable-next-line no-console
+          console.error(error)
+        } else {
+          Sentry.captureException(new Error(error))
+        }
       }
     },
     toggleContentTheme() {

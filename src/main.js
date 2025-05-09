@@ -39,17 +39,20 @@ import 'prismjs/components/prism-css'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/vue'
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL
-
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
-Sentry.init({
-  app,
-  dsn: 'https://75e7e178b51822137a67f5a4e99d6d42@o4509285461065728.ingest.us.sentry.io/4509285469782016',
-  // Setting this option to true will send default PII data to Sentry.
-  // For example, automatic IP address collection on events
-  sendDefaultPii: true,
-})
+if (import.meta.env.MODE === 'production') {
+  Sentry.init({
+    app,
+    dsn: 'https://75e7e178b51822137a67f5a4e99d6d42@o4509285461065728.ingest.us.sentry.io/4509285469782016',
+    // Setting this option to true will send default PII data to Sentry.
+    // For example, automatic IP address collection on events
+    sendDefaultPii: true,
+  })
+}
+
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
+
 app.config.globalProperties.$axios = axios
 
 app.config.globalProperties.$sanitize = DOMPurify.sanitize
