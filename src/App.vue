@@ -11,7 +11,6 @@ import FooterSection from './components/Footer/FooterSection.vue'
     class="flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
   >
     <SiteLogo />
-
     <!-- The mobile nav side bar controls opening and closing the menu -->
     <MobileNavSideBar />
     <!-- The desktop nav bar is only visible starting on tablet devices -->

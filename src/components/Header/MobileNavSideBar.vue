@@ -19,7 +19,6 @@
 import BarsButton from './BarsButton.vue'
 import SideBar from './SideBar.vue'
 
-// All data and methods related to isMenuOpen are used for mobile devices
 export default {
   components: {
     BarsButton,

@@ -6,7 +6,6 @@ import * as Sentry from '@sentry/vue'
 </script>
 
 <template>
-  <!-- BlogDetailView -->
   <section class="mx-auto mb-20 max-w-4xl md:my-8">
     <!-- Cover Image -->
     <img
@@ -16,7 +15,7 @@ import * as Sentry from '@sentry/vue'
       class="mb-6 h-auto w-full md:rounded-xl"
     />
 
-    <!-- Title and Metadata -->
+    <!-- Blog Post metadata -->
     <div class="mb-6">
       <h1
         class="mb-2 flex min-h-fit content-center items-center justify-between bg-orange-500 py-2 pr-8 pl-3 text-2xl font-bold text-white md:text-4xl"

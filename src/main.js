@@ -3,7 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-// import axios
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -30,7 +29,7 @@ library.add([
 ])
 import 'firacode'
 import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css' // or any theme you like
+import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-python'

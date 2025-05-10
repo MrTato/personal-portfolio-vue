@@ -16,10 +16,10 @@ const router = createRouter({
       component: BlogView,
     },
     {
-      path: '/blog/:slug', // dynamic route
+      path: '/blog/:slug',
       name: 'blog-detail',
       component: BlogDetailView,
-      props: true, // passes `slug` as a prop
+      props: true,
     },
     {
       path: '/projects',
@@ -46,21 +46,11 @@ const router = createRouter({
       name: 'NotFound',
       component: () => import('@/views/NotFoundView.vue'),
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import('../views/AboutView.vue'),
-    // },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      // Use browser's saved position (e.g., back/forward)
       return savedPosition
     } else {
-      // Scroll to top
       return { top: 0 }
     }
   },
