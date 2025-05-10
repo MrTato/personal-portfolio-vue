@@ -1,7 +1,13 @@
 <template>
   <nav class="flex flex-col md:hidden">
     <Transition name="spiral-collapse">
-      <BarsButton @click="toggleMenu" v-if="!isMenuOpen" />
+      <BarsButton
+        @click="toggleMenu"
+        v-if="!isMenuOpen"
+        aria-label="Open menu"
+        :aria-expanded="isMenuOpen"
+        aria-controls="mobile-navigation"
+      />
     </Transition>
     <Transition name="slide">
       <SideBar v-if="isMenuOpen" @click.self="closeMenu" @navigation="closeMenu" />
@@ -13,7 +19,6 @@
 import BarsButton from './BarsButton.vue'
 import SideBar from './SideBar.vue'
 
-// All data and methods related to isMenuOpen are used for mobile devices
 export default {
   components: {
     BarsButton,

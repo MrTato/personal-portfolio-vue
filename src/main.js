@@ -3,7 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-// import axios
 import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -30,17 +29,28 @@ library.add([
 ])
 import 'firacode'
 import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css' // or any theme you like
+import 'prismjs/themes/prism-tomorrow.css'
 import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-python'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-css'
 import DOMPurify from 'dompurify'
-
-axios.defaults.baseURL = import.meta.env.VITE_API_URL
+import * as Sentry from '@sentry/vue'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
+
+if (import.meta.env.MODE === 'production') {
+  Sentry.init({
+    app,
+    dsn: 'https://75e7e178b51822137a67f5a4e99d6d42@o4509285461065728.ingest.us.sentry.io/4509285469782016',
+    // Setting this option to true will send default PII data to Sentry.
+    // For example, automatic IP address collection on events
+    sendDefaultPii: true,
+  })
+}
+
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
 
 app.config.globalProperties.$axios = axios
 

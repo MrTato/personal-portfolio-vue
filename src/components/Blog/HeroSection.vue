@@ -1,26 +1,30 @@
 <template>
   <section
     class="relative h-[400px] w-screen overflow-hidden sm:h-[500px] md:h-[600px] lg:w-3/5 lg:rounded-b-4xl"
+    aria-label="Featured blog posts"
   >
     <!-- Slides -->
     <div
       class="flex h-full"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
       :class="{
         'transition-transform duration-700 ease-in-out': areTransitionsOn,
       }"
       :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
     >
-      <div
+      <article
         v-for="(slide, index) in circularSlides"
         :key="index"
         class="flex h-full min-w-full items-center justify-center bg-cover bg-center md:justify-start"
         :style="{ backgroundImage: `url(${slide.cover_image})` }"
+        :aria-label="`Featured post ${index + 1}`"
       >
         <div
           class="bg-opacity-70 mx-4 max-w-80 rounded-lg bg-black p-6 shadow-2xl backdrop-blur-md sm:mx-8 sm:max-w-md sm:p-8 md:ml-16"
         >
           <p class="mb-2 font-mono text-xs tracking-widest text-orange-400 uppercase sm:text-sm">
-            {{ slide.updated_at }}
+            <time :datetime="slide.updated_at">{{ slide.updated_at }}</time>
           </p>
           <h2 class="mb-4 text-2xl leading-tight font-bold text-white sm:text-3xl md:text-4xl">
             {{ slide.title }}
@@ -40,21 +44,25 @@
             />
           </RouterLink>
         </div>
-      </div>
+      </article>
     </div>
 
     <!-- Navigation Dots -->
     <div
       v-if="this.slides.length > 1"
       class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-4"
+      role="tablist"
+      aria-label="Slide navigation"
     >
       <button
         v-for="(slide, index) in slides"
         :key="index"
-        @click="goToSlide(index)"
+        @click="goToSlide(index + 1)"
+        :aria-label="`Go to slide ${index + 1}`"
+        :aria-current="currentIndex === index ? 'true' : undefined"
         :class="[
           'h-4 w-4 rounded-full transition-all duration-300',
-          currentIndex === index
+          currentIndex === index + 1
             ? 'scale-110 bg-orange-500'
             : 'bg-gray-400 hover:scale-110 hover:bg-orange-500',
         ]"
@@ -73,9 +81,11 @@ export default {
   },
   data() {
     return {
-      currentIndex: 0,
+      currentIndex: 1,
       interval: null,
       areTransitionsOn: true,
+      touchStartX: 0,
+      touchEndX: 0,
     }
   },
   computed: {
@@ -85,7 +95,11 @@ export default {
           ...slide,
           updated_at: slide.updated_at.split('T')[0], // keep only the date part
         }))
-        return [...correctDateSlides, correctDateSlides[0]]
+        return [
+          correctDateSlides[correctDateSlides.length - 1],
+          ...correctDateSlides,
+          correctDateSlides[0],
+        ]
       }
       return []
     },
@@ -105,6 +119,17 @@ export default {
       this.areTransitionsOn = true
       this.currentIndex = index
       clearInterval(this.interval)
+      if (this.currentIndex === this.circularSlides.length - 1) {
+        setTimeout(() => {
+          this.areTransitionsOn = false
+          this.currentIndex = 1
+        }, 700)
+      } else if (this.currentIndex === 0) {
+        setTimeout(() => {
+          this.areTransitionsOn = false
+          this.currentIndex = this.circularSlides.length - 2
+        }, 700)
+      }
     },
     startAutoSlide() {
       this.interval = setInterval(() => {
@@ -113,10 +138,31 @@ export default {
         if (this.currentIndex === this.circularSlides.length - 1) {
           setTimeout(() => {
             this.areTransitionsOn = false
-            this.currentIndex = 0
+            this.currentIndex = 1
           }, 700)
         }
-      }, 5000)
+      }, 10000)
+    },
+    handleTouchStart(event) {
+      this.touchStartX = event.changedTouches[0].clientX
+    },
+    handleTouchEnd(event) {
+      this.touchEndX = event.changedTouches[0].clientX
+      this.handleSwipe()
+    },
+    handleSwipe() {
+      const swipeDistance = this.touchEndX - this.touchStartX
+      const threshold = 50 // minimum swipe distance in pixels
+
+      if (Math.abs(swipeDistance) > threshold) {
+        let nextIndex = this.currentIndex
+        if (swipeDistance < 0) {
+          nextIndex = this.currentIndex < this.circularSlides.length - 1 ? this.currentIndex + 1 : 0
+        } else {
+          nextIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.circularSlides.length - 1
+        }
+        this.goToSlide(nextIndex)
+      }
     },
   },
 }

@@ -1,10 +1,9 @@
 <template>
   <!-- Theme Toggle Switch -->
-  <div class="absolute top-6 right-6 flex flex-col items-center">
-    <!-- Switch Button -->
+  <div class="absolute top-6 right-6 flex flex-col items-center" aria-hidden="true">
     <button
       @click="emitToggle"
-      class="relative h-8 w-28 cursor-pointer rounded-full"
+      class="relative h-8 w-28 cursor-pointer rounded-full focus:ring-2 focus:ring-orange-500 focus:outline-none"
       :class="
         contentTheme === 'dark' ? 'bg-[#181818] text-orange-500' : 'bg-orange-500 text-[#181818]'
       "
@@ -13,15 +12,17 @@
       <span
         class="absolute left-0 z-10 h-full w-1/2 transform content-center rounded-full bg-gray-800 transition-all duration-300 ease-in-out"
         :class="contentTheme === 'dark' ? 'translate-x-full' : 'translate-x-0'"
-        ><!-- Icon (on top of the switch) -->
+      >
+        <!-- Icon -->
         <transition name="fade" mode="out-in">
           <font-awesome-icon
             :key="contentTheme"
             :icon="contentTheme === 'dark' ? ['fas', 'moon'] : ['fas', 'sun']"
             class="text-2xl transition-transform duration-300"
             :class="contentTheme === 'dark' ? 'text-gray-300' : 'text-yellow-400'"
-          /> </transition
-      ></span>
+          />
+        </transition>
+      </span>
 
       <!-- Labels -->
       <div
