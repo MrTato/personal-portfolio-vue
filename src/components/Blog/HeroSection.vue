@@ -6,6 +6,8 @@
     <!-- Slides -->
     <div
       class="flex h-full"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
       :class="{
         'transition-transform duration-700 ease-in-out': areTransitionsOn,
       }"
@@ -82,6 +84,8 @@ export default {
       currentIndex: 0,
       interval: null,
       areTransitionsOn: true,
+      touchStartX: 0,
+      touchEndX: 0,
     }
   },
   computed: {
@@ -122,7 +126,28 @@ export default {
             this.currentIndex = 0
           }, 700)
         }
-      }, 5000)
+      }, 10000)
+    },
+    handleTouchStart(event) {
+      this.touchStartX = event.changedTouches[0].clientX
+    },
+    handleTouchEnd(event) {
+      this.touchEndX = event.changedTouches[0].clientX
+      this.handleSwipe()
+    },
+    handleSwipe() {
+      const swipeDistance = this.touchEndX - this.touchStartX
+      const threshold = 50 // minimum swipe distance in pixels
+
+      if (Math.abs(swipeDistance) > threshold) {
+        let nextIndex = this.currentIndex
+        if (swipeDistance < 0) {
+          nextIndex = this.currentIndex < this.slides.length - 1 ? this.currentIndex + 1 : 0
+        } else {
+          nextIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.slides.length - 1
+        }
+        this.goToSlide(nextIndex)
+      }
     },
   },
 }
