@@ -10,15 +10,13 @@
     <div class="md:col-span-1">
       <h3 class="mb-2 text-lg font-semibold text-white">Navigation</h3>
       <ul class="space-y-1">
-        <li class="transition hover:text-orange-400"><RouterLink to="/blog">Blog</RouterLink></li>
-        <li class="transition hover:text-orange-400">
-          <RouterLink to="/projects">Projects</RouterLink>
+        <li><RouterLink to="/blog" class="transition hover:text-orange-400">Blog</RouterLink></li>
+        <li>
+          <RouterLink to="/projects" class="transition hover:text-orange-400">Projects</RouterLink>
         </li>
-        <li class="transition hover:text-orange-400">
-          <RouterLink to="/about">About</RouterLink>
-        </li>
-        <li class="transition hover:text-orange-400">
-          <RouterLink to="/contact">Contact</RouterLink>
+        <li><RouterLink to="/about" class="transition hover:text-orange-400">About</RouterLink></li>
+        <li>
+          <RouterLink to="/contact" class="transition hover:text-orange-400">Contact</RouterLink>
         </li>
       </ul>
     </div>
@@ -26,11 +24,12 @@
     <!-- Social Links -->
     <div class="md:col-span-1">
       <h3 class="mb-2 text-lg font-semibold text-white">Find Me</h3>
-      <div class="flex space-x-5 text-3xl">
+      <div class="flex space-x-5 text-3xl" aria-label="Social media links">
         <a
           href="https://github.com/MrTato"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
           class="transition-transform duration-300 hover:scale-120 hover:text-[#333]"
         >
           <font-awesome-icon :icon="['fab', 'github']" />
@@ -39,17 +38,17 @@
           href="https://www.linkedin.com/in/bayardo-lopez"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
           class="transition-transform duration-300 hover:scale-120 hover:text-[#0077B5]"
         >
           <font-awesome-icon :icon="['fab', 'linkedin']" />
         </a>
         <a
           href="mailto:developer@bayardolopez.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          aria-label="Email"
           class="transition-transform duration-300 hover:scale-120 hover:text-red-500"
         >
-          <font-awesome-icon class="gmail" :icon="['fas', 'envelope']" />
+          <font-awesome-icon :icon="['fas', 'envelope']" />
         </a>
       </div>
     </div>
@@ -72,18 +71,18 @@
         <h4 class="mb-1 font-semibold text-orange-400">Featured Project</h4>
         <p class="text-white">
           Check out my latest project:
-          <RouterLink to="/projects/latest" class="underline hover:text-orange-400"
-            >Smart Portfolio Generator</RouterLink
-          >
+          <RouterLink to="/projects/latest" class="underline hover:text-orange-400">
+            Smart Portfolio Generator
+          </RouterLink>
         </p>
       </div>
 
-      <!-- GitHub Contribution Chart (real-time placeholder) -->
+      <!-- GitHub Contribution Chart -->
       <div>
         <h4 class="mb-2 font-semibold text-orange-400">GitHub Contributions</h4>
         <img
           src="https://ghchart.rshah.org/MrTato"
-          alt="GitHub Contribution Chart"
+          alt="GitHub contribution chart for MrTato"
           class="w-full"
         />
       </div>
