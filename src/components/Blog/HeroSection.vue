@@ -57,12 +57,12 @@
       <button
         v-for="(slide, index) in slides"
         :key="index"
-        @click="goToSlide(index)"
+        @click="goToSlide(index + 1)"
         :aria-label="`Go to slide ${index + 1}`"
         :aria-current="currentIndex === index ? 'true' : undefined"
         :class="[
           'h-4 w-4 rounded-full transition-all duration-300',
-          currentIndex === index
+          currentIndex === index + 1
             ? 'scale-110 bg-orange-500'
             : 'bg-gray-400 hover:scale-110 hover:bg-orange-500',
         ]"
@@ -81,7 +81,7 @@ export default {
   },
   data() {
     return {
-      currentIndex: 0,
+      currentIndex: 1,
       interval: null,
       areTransitionsOn: true,
       touchStartX: 0,
@@ -95,7 +95,11 @@ export default {
           ...slide,
           updated_at: slide.updated_at.split('T')[0], // keep only the date part
         }))
-        return [...correctDateSlides, correctDateSlides[0]]
+        return [
+          correctDateSlides[correctDateSlides.length - 1],
+          ...correctDateSlides,
+          correctDateSlides[0],
+        ]
       }
       return []
     },
@@ -115,6 +119,17 @@ export default {
       this.areTransitionsOn = true
       this.currentIndex = index
       clearInterval(this.interval)
+      if (this.currentIndex === this.circularSlides.length - 1) {
+        setTimeout(() => {
+          this.areTransitionsOn = false
+          this.currentIndex = 1
+        }, 700)
+      } else if (this.currentIndex === 0) {
+        setTimeout(() => {
+          this.areTransitionsOn = false
+          this.currentIndex = this.circularSlides.length - 2
+        }, 700)
+      }
     },
     startAutoSlide() {
       this.interval = setInterval(() => {
@@ -123,7 +138,7 @@ export default {
         if (this.currentIndex === this.circularSlides.length - 1) {
           setTimeout(() => {
             this.areTransitionsOn = false
-            this.currentIndex = 0
+            this.currentIndex = 1
           }, 700)
         }
       }, 10000)
@@ -142,9 +157,9 @@ export default {
       if (Math.abs(swipeDistance) > threshold) {
         let nextIndex = this.currentIndex
         if (swipeDistance < 0) {
-          nextIndex = this.currentIndex < this.slides.length - 1 ? this.currentIndex + 1 : 0
+          nextIndex = this.currentIndex < this.circularSlides.length - 1 ? this.currentIndex + 1 : 0
         } else {
-          nextIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.slides.length - 1
+          nextIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.circularSlides.length - 1
         }
         this.goToSlide(nextIndex)
       }
