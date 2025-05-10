@@ -69,17 +69,6 @@
 
     <!-- Full Width Section -->
     <div class="space-y-6 border-t border-gray-700 pt-6 md:col-span-4">
-      <!-- Featured Project Teaser -->
-      <div class="text-sm">
-        <h4 class="mb-1 font-semibold text-orange-400">Featured Project</h4>
-        <p class="text-white">
-          Check out my latest project:
-          <RouterLink to="/projects/latest" class="underline hover:text-orange-400">
-            Smart Portfolio Generator
-          </RouterLink>
-        </p>
-      </div>
-
       <!-- GitHub Contribution Chart -->
       <div>
         <h4 class="mb-2 font-semibold text-orange-400">GitHub Contributions</h4>
