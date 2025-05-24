@@ -1,6 +1,5 @@
 <script setup>
-import LeftSection from '@/components/Home/LeftSection.vue'
-import RightSection from '@/components/Home/RightSection.vue'
+import PositionedSection from '@/components/Home/PositionedSection.vue'
 </script>
 
 <template>
@@ -8,16 +7,16 @@ import RightSection from '@/components/Home/RightSection.vue'
     <!-- Central vertical line -->
     <div class="absolute top-0 right-1/2 left-1/2 z-0 hidden h-full w-1 bg-white md:block"></div>
 
-    <LeftSection />
+    <PositionedSection :isLeft="true" />
 
-    <RightSection />
+    <PositionedSection :isLeft="false" />
 
-    <LeftSection />
+    <PositionedSection :isLeft="true" />
 
-    <RightSection />
+    <PositionedSection :isLeft="false" />
 
-    <LeftSection />
+    <PositionedSection :isLeft="true" />
 
-    <RightSection />
+    <PositionedSection :isLeft="false" />
   </section>
 </template>
