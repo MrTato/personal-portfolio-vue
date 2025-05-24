@@ -1,0 +1,17 @@
+<template>
+  <!-- Section 1: Previous Positions -->
+  <div class="relative h-60 w-240">
+    <!-- Connector line and dot -->
+    <div class="absolute top-[47.5%] right-[45%] z-10 h-4 w-4 rounded-full bg-white"></div>
+    <div class="absolute top-1/2 left-1/2 z-10 h-1 w-10 bg-white"></div>
+
+    <div class="absolute right-0 space-y-4 bg-[#181818] p-8 text-left md:w-[45%]">
+      <h2 class="text-2xl font-bold text-orange-400 sm:text-3xl">Previous Positions</h2>
+      <ul class="list-inside list-disc text-base text-gray-200 sm:text-lg">
+        <li>Frontend Developer at XYZ Inc. (2022–2024)</li>
+        <li>Junior Developer at ABC Co. (2020–2022)</li>
+        <li>Intern at DevStart (2019–2020)</li>
+      </ul>
+    </div>
+  </div>
+</template>
