@@ -3,9 +3,9 @@ import PositionedSection from '@/components/Home/PositionedSection.vue'
 </script>
 
 <template>
-  <section class="relative space-y-4 px-4 text-white md:space-y-0 md:py-20">
+  <section class="relative space-y-8 p-8 text-white md:py-20">
     <!-- Central vertical line -->
-    <div class="absolute top-0 right-1/2 left-1/2 z-0 hidden h-full w-1 bg-white md:block"></div>
+    <div class="absolute top-0 right-1/2 left-1/2 z-0 h-full w-1 bg-white"></div>
 
     <PositionedSection :isLeft="true" />
 
