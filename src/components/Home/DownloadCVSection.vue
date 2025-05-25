@@ -27,7 +27,7 @@ export default {
   props: {
     cvFile: {
       type: String,
-      default: '/files/Bayardo-CV.pdf', // adjust to your actual path
+      default: '/public/Bayardo Lopez Web Developer CV.pdf',
     },
   },
 }

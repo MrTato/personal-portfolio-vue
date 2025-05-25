@@ -1,6 +1,7 @@
 <script setup>
 import PositionedSection from '@/components/Home/PositionedSection.vue'
 import HeroSection from '@/components/Home/HeroSection.vue'
+import DownloadCVSection from '@/components/Home/DownloadCVSection.vue'
 </script>
 
 <template>
@@ -160,5 +161,6 @@ import HeroSection from '@/components/Home/HeroSection.vue'
         ]"
       />
     </section>
+    <DownloadCVSection />
   </div>
 </template>
