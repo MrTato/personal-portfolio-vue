@@ -1,3 +1,7 @@
+<script setup>
+import * as Sentry from '@sentry/vue'
+</script>
+
 <template>
   <section class="bg-[#0d0d0d] px-6 py-10 text-white lg:py-30">
     <div class="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-2">
@@ -59,7 +63,6 @@
 
 <script>
 export default {
-  name: 'ContactView',
   data() {
     return {
       form: {
@@ -71,10 +74,41 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-      // For now, just log — replace with API later
-      console.log('Form submitted:', this.form)
-      alert('Message sent! (Not yet wired to backend)')
+    async submitForm() {
+      let response
+      if (import.meta.env.MODE === 'development') {
+        try {
+          response = await this.$axios.post('/contact/', this.form)
+
+          if (response.status !== 200 && response.status !== 201) {
+            throw new Error(response.data)
+          }
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error)
+        }
+      } else {
+        try {
+          // Get token from reCAPTCHA v3
+          const token = await this.$recaptcha('contact_form')
+
+          // Prepare form payload
+          const payload = {
+            ...this.form,
+            recaptchaToken: token,
+          }
+
+          // Send with Axios
+          response = await this.$axios.post('/contact/', payload)
+
+          if (response.status !== 200 && response.status !== 201) {
+            throw new Error(response.data)
+          }
+        } catch (error) {
+          Sentry.captureException(new Error(error))
+        }
+      }
+
       this.form = {
         name: '',
         email: '',
