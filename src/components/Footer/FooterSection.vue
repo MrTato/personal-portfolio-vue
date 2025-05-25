@@ -3,7 +3,7 @@
     <!-- Bio -->
     <div class="md:col-span-1">
       <h2 class="text-2xl font-bold text-orange-500">Bayardo López</h2>
-      <p class="mt-2 text-sm italic">Data Developer</p>
+      <p class="mt-2 text-sm italic">Web Developer</p>
     </div>
 
     <!-- Navigation -->

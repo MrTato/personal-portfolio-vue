@@ -15,7 +15,7 @@ import SkillsSection from '@/components/Home/SkillsSection.vue'
       class="w-screen lg:w-6xl"
     />
 
-    <WhatIDoSection class="max-w-6xl" />
+    <WhatIDoSection class="max-w-4xl" />
 
     <SkillsSection class="w-screen max-w-6xl" />
 
