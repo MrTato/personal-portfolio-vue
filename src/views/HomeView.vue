@@ -12,7 +12,9 @@ import HeroSection from '@/components/Home/HeroSection.vue'
       description="Web Developer with 2 years of experience and 5 years of total professional experience with a passion on translating ideas into tools that users not only depend on but enjoy relying on. I am at my most comfortable when using JavaScript and Python, love learning, brainstorming my way towards a solution, and constantly improving towards excellency."
       class="w-screen lg:w-auto"
     />
-    <section class="relative flex flex-col items-center space-y-8 p-8 text-white md:pb-20">
+    <section
+      class="relative flex flex-col items-center justify-center space-y-8 p-8 text-white md:pb-20"
+    >
       <!-- Central vertical line -->
       <span class="absolute top-0 right-1/2 left-1/2 z-0 h-full w-1 bg-white"></span>
 
