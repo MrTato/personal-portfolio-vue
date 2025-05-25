@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-fit md:w-150 lg:h-150 lg:w-240">
+  <div class="relative h-fit w-full md:w-150 lg:w-240">
     <!-- Connector line and dot -->
     <div
       class="absolute top-[47.5%] z-10 hidden h-4 w-4 rounded-full bg-white lg:block"
@@ -11,7 +11,7 @@
     ></div>
 
     <div
-      class="space-y-4 bg-[#181818] p-8 text-left lg:absolute lg:w-[45%]"
+      class="h-max space-y-4 bg-[#181818] p-8 text-left lg:absolute lg:w-[45%]"
       :class="isLeft ? 'left-0' : 'right-0'"
     >
       <h2 class="text-2xl font-bold text-orange-400 sm:text-3xl">{{ title }}</h2>
