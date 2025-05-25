@@ -2,6 +2,7 @@
 import * as Sentry from '@sentry/vue'
 import SuccessModal from '@/components/shared/SuccessModal.vue'
 import ErrorModal from '@/components/shared/ErrorModal.vue'
+import SubmitButton from '@/components/shared/SubmitButton.vue'
 </script>
 
 <template>
@@ -22,42 +23,39 @@ import ErrorModal from '@/components/shared/ErrorModal.vue'
       </div>
       <!-- Contact Form -->
       <form class="space-y-6" @submit.prevent="submitForm">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <fieldset :disabled="isSending" class="space-y-6">
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <input
+              type="text"
+              v-model="form.name"
+              placeholder="Your name*"
+              required
+              class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+            />
+            <input
+              type="email"
+              v-model="form.email"
+              placeholder="Your email*"
+              required
+              class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+            />
+          </div>
           <input
-            type="text"
-            v-model="form.name"
-            placeholder="Your name*"
-            required
+            type="tel"
+            v-model="form.phone"
+            placeholder="Your phone"
             class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
           />
-          <input
-            type="email"
-            v-model="form.email"
-            placeholder="Your email*"
+          <textarea
+            v-model="form.message"
+            rows="5"
+            placeholder="Message"
             required
             class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-          />
-        </div>
-        <input
-          type="tel"
-          v-model="form.phone"
-          placeholder="Your phone"
-          class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-        />
-        <textarea
-          v-model="form.message"
-          rows="5"
-          placeholder="Message"
-          required
-          class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-        ></textarea>
+          ></textarea>
+        </fieldset>
 
-        <button
-          type="submit"
-          class="rounded-full bg-orange-500 px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-orange-600 active:scale-95"
-        >
-          Send Message
-        </button>
+        <SubmitButton :is-sending="isSending" />
       </form>
     </div>
 
@@ -79,6 +77,7 @@ export default {
       },
       showSuccess: false,
       showError: false,
+      isSending: false,
     }
   },
   methods: {
@@ -89,6 +88,7 @@ export default {
       this.showError = false
     },
     async submitForm() {
+      this.isSending = true
       let response
       if (import.meta.env.MODE === 'development') {
         try {
@@ -122,6 +122,8 @@ export default {
           Sentry.captureException(new Error(error))
         }
       }
+
+      this.isSending = false
 
       if (response.status === 200 || response.status === 201) {
         this.showSuccess = true
