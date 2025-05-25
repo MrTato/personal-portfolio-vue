@@ -12,7 +12,7 @@ import * as Sentry from '@sentry/vue'
       v-if="coverImage"
       :src="coverImage"
       alt="Cover Image"
-      class="mb-6 h-auto w-full md:rounded-xl"
+      class="h-auto w-full md:mb-6 md:rounded-xl"
     />
 
     <!-- Blog Post metadata -->
