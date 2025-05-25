@@ -13,8 +13,9 @@ import {
   faSquareFull,
   faMoon,
   faSun,
+  faDatabase,
 } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faLinkedin, faVuejs } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedin, faVuejs, faPython } from '@fortawesome/free-brands-svg-icons'
 
 library.add([
   faBars,
@@ -26,6 +27,8 @@ library.add([
   faMoon,
   faSun,
   faVuejs,
+  faPython,
+  faDatabase,
 ])
 import 'firacode'
 import 'prismjs'
