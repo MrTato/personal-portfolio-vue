@@ -8,7 +8,7 @@ import FooterSection from './components/Footer/FooterSection.vue'
 
 <template>
   <header
-    class="flex w-full items-center justify-between p-8 md:justify-center md:bg-[#181818] md:p-4"
+    class="flex w-full items-center justify-between p-8 md:justify-around md:bg-[#181818] md:p-4"
   >
     <SiteLogo />
     <!-- The mobile nav side bar controls opening and closing the menu -->

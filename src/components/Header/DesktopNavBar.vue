@@ -5,10 +5,10 @@
     role="navigation"
   >
     <HeaderLink to="/blog">Blog</HeaderLink>
-    <HeaderLink to="/projects">Projects</HeaderLink>
+    <!-- <HeaderLink to="/projects">Projects</HeaderLink>
     <HeaderLink to="/contact">Contact</HeaderLink>
     <HeaderLink to="/about">About</HeaderLink>
-    <HeaderLink to="/services">Services</HeaderLink>
+    <HeaderLink to="/services">Services</HeaderLink> -->
   </nav>
 </template>
 
