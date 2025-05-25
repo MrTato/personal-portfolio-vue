@@ -34,6 +34,8 @@ export default {
         { title: 'SQL | PostgreSQL', level: 95 },
         { title: 'Pandas', level: 95 },
         { title: 'Git', level: 90 },
+        { title: 'English', level: 99 },
+        { title: 'Spanish', level: 100 },
       ],
     }
   },
