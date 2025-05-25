@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#0d0d0d] px-6 py-20 text-center text-white">
+  <section class="bg-[#0d0d0d] px-6 py-10 text-center text-white">
     <!-- Section Title -->
     <h2 class="mb-12 text-3xl font-extrabold text-orange-400 sm:text-4xl">Skills</h2>
 
