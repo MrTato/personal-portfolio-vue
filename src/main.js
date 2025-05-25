@@ -15,6 +15,7 @@ import {
   faSun,
   faDatabase,
   faCircleCheck,
+  faCircleXmark,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin, faVuejs, faPython } from '@fortawesome/free-brands-svg-icons'
 
@@ -31,6 +32,7 @@ library.add([
   faPython,
   faDatabase,
   faCircleCheck,
+  faCircleXmark,
 ])
 import 'firacode'
 import 'prismjs'

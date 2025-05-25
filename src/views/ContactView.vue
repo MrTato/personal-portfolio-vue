@@ -1,6 +1,7 @@
 <script setup>
 import * as Sentry from '@sentry/vue'
 import SuccessModal from '@/components/shared/SuccessModal.vue'
+import ErrorModal from '@/components/shared/ErrorModal.vue'
 </script>
 
 <template>
@@ -61,6 +62,8 @@ import SuccessModal from '@/components/shared/SuccessModal.vue'
     </div>
 
     <SuccessModal :show="showSuccess" @toggle-success-modal="onToggleSuccessModal" />
+
+    <ErrorModal :show="showError" @toggle-error-modal="onToggleErrorModal" />
   </section>
 </template>
 
@@ -75,12 +78,15 @@ export default {
         message: '',
       },
       showSuccess: false,
-      showFailure: true,
+      showError: false,
     }
   },
   methods: {
     onToggleSuccessModal() {
       this.showSuccess = false
+    },
+    onToggleErrorModal() {
+      this.showError = false
     },
     async submitForm() {
       let response
@@ -126,6 +132,8 @@ export default {
           phone: '',
           message: '',
         }
+      } else {
+        this.showError = true
       }
     },
   },
