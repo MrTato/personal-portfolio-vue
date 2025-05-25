@@ -30,7 +30,7 @@ const router = createRouter({
     {
       path: '/contact',
       name: 'contact',
-      component: () => import('@/views/MaintenanceView.vue'),
+      component: () => import('@/views/ContactView.vue'),
     },
     {
       path: '/about',

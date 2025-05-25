@@ -13,12 +13,12 @@
         <li><RouterLink to="/blog" class="transition hover:text-orange-400">Blog</RouterLink></li>
         <!-- <li>
           <RouterLink to="/projects" class="transition hover:text-orange-400">Projects</RouterLink>
-        </li>
+        </li> -->
         <li>
           <RouterLink to="/contact" class="transition hover:text-orange-400">Contact</RouterLink>
         </li>
-        <li><RouterLink to="/about" class="transition hover:text-orange-400">About</RouterLink></li>
-        <li>
+        <!-- <li><RouterLink to="/about" class="transition hover:text-orange-400">About</RouterLink></li> -->
+        <!-- <li>
           <RouterLink to="/services" class="transition hover:text-orange-400">Services</RouterLink>
         </li> -->
       </ul>
@@ -59,12 +59,12 @@
     <!-- Contact CTA -->
     <div class="md:col-span-1">
       <h3 class="mb-2 text-xl font-bold text-white">Let’s work together</h3>
-      <a
-        href="mailto:developer@bayardolopez.com"
+      <RouterLink
+        to="/contact"
         class="mt-2 inline-block rounded border border-orange-500 px-4 py-2 text-orange-500 transition hover:bg-orange-500 hover:text-black"
       >
         Get in Touch
-      </a>
+      </RouterLink>
     </div>
 
     <!-- Full Width Section -->
