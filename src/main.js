@@ -14,6 +14,8 @@ import {
   faMoon,
   faSun,
   faDatabase,
+  faCircleCheck,
+  faCircleXmark,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin, faVuejs, faPython } from '@fortawesome/free-brands-svg-icons'
 
@@ -29,6 +31,8 @@ library.add([
   faVuejs,
   faPython,
   faDatabase,
+  faCircleCheck,
+  faCircleXmark,
 ])
 import 'firacode'
 import 'prismjs'
@@ -40,8 +44,18 @@ import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-css'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/vue'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
+
+if (import.meta.env.MODE === 'production') {
+  app.use(VueReCaptcha, {
+    siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
+    loaderOptions: {
+      autoHideBadge: true,
+    },
+  })
+}
 
 if (import.meta.env.MODE === 'production') {
   Sentry.init({

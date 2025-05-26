@@ -25,6 +25,7 @@
     "marked": "^15.0.11",
     "prismjs": "^1.30.0",
     "vue": "^3.5.13",
+    "vue-recaptcha-v3": "^2.0.1",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
