@@ -1,28 +1,30 @@
 <template>
-  <section class="bg-[#121212] px-6 py-16 text-white md:px-12 lg:px-32">
+  <section
+    class="flex w-screen flex-col items-center justify-center bg-[#181818] px-6 py-16 text-white md:px-12 lg:w-224"
+  >
     <h2 class="mb-16 text-center text-3xl font-bold md:text-4xl">How I Work</h2>
 
-    <div class="hidden md:grid md:grid-cols-3 md:gap-8">
+    <div class="hidden gap-4 pr-6 md:grid md:grid-cols-[0.5fr_0.15fr_1fr]">
       <div v-for="(item, index) in values" :key="index" class="contents">
         <!-- Left: Core Value -->
-        <div class="flex items-start justify-end pr-6">
+        <div class="flex items-start justify-end">
           <h3 class="text-right text-lg font-semibold text-gray-300">
             {{ item.title }}
           </h3>
         </div>
 
         <!-- Center: Timeline Dot and Line -->
-        <div class="relative flex justify-center">
+        <div class="relative flex justify-center pt-2">
           <span class="z-10 h-4 w-4 rounded-full bg-orange-500"></span>
           <!-- Vertical line, except for last item -->
           <div
             v-if="index !== values.length - 1"
-            class="absolute top-4 left-1/2 h-full w-px -translate-x-1/2 bg-gray-700"
+            class="absolute top-6 right-1/2 left-1/2 h-full w-px bg-white"
           ></div>
         </div>
 
         <!-- Right: Description -->
-        <div class="pl-6 text-justify text-gray-300">
+        <div class="text-gray-300">
           <p>{{ item.description }}</p>
         </div>
       </div>
@@ -62,7 +64,7 @@ export default {
         {
           title: 'Clear Communication',
           description:
-            'I explain my decisions in plain terms, offer alternatives when needed, and keep clients updated regularly. I believe communication builds trust.',
+            'I explain my decisions in plain terms, offer alternatives when needed, and keep regular updates. I believe communication builds trust.',
         },
         {
           title: 'Flexible Collaboration',
