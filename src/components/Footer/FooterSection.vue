@@ -17,7 +17,7 @@
         <li>
           <RouterLink to="/contact" class="transition hover:text-orange-400">Contact</RouterLink>
         </li>
-        <!-- <li><RouterLink to="/about" class="transition hover:text-orange-400">About</RouterLink></li> -->
+        <li><RouterLink to="/about" class="transition hover:text-orange-400">About</RouterLink></li>
         <!-- <li>
           <RouterLink to="/services" class="transition hover:text-orange-400">Services</RouterLink>
         </li> -->

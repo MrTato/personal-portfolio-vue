@@ -6,7 +6,7 @@
       <HeaderLink to="/blog" @click="navigate">Blog</HeaderLink>
       <!-- <HeaderLink to="/projects" @click="navigate">Projects</HeaderLink> -->
       <HeaderLink to="/contact" @click="navigate">Contact</HeaderLink>
-      <!-- <HeaderLink to="/about" @click="navigate">About</HeaderLink> -->
+      <HeaderLink to="/about" @click="navigate">About</HeaderLink>
       <!-- <HeaderLink to="/services" @click="navigate">Services</HeaderLink> -->
     </div>
   </section>
