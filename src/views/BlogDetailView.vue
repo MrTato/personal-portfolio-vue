@@ -3,56 +3,47 @@ import ThemeToggleSwitch from '@/components/Blog/ThemeToggleSwitch.vue'
 import { marked } from 'marked'
 import Prism from 'prismjs'
 import * as Sentry from '@sentry/vue'
+import BlogDetailLoadingSkeleton from '@/components/Blog/BlogDetailLoadingSkeleton.vue'
 </script>
 
 <template>
-  <section class="mx-auto mb-20 max-w-4xl md:my-8">
-    <!-- Cover Image -->
-    <img
-      v-if="coverImage"
-      :src="coverImage"
-      alt="Cover Image"
-      class="h-auto w-full md:mb-6 md:rounded-xl"
-    />
+  <transition name="fade" mode="out-in">
+    <BlogDetailLoadingSkeleton v-if="isLoading" />
+    <section class="mx-auto max-w-4xl md:my-8 md:mb-20" v-else>
+      <!-- Cover Image -->
+      <img
+        v-if="coverImage"
+        :src="coverImage"
+        alt="Cover Image"
+        class="h-auto w-full md:mb-6 md:rounded-xl"
+      />
 
-    <!-- Blog Post metadata -->
-    <div class="mb-6">
-      <h1
-        class="mb-2 flex min-h-fit content-center items-center justify-between bg-orange-500 py-2 pr-8 pl-3 text-2xl font-bold text-white md:text-4xl"
-      >
-        <span>{{ title }}</span>
-      </h1>
-      <p class="text-sm text-gray-400">
-        By <strong class="font-medium text-white">{{ author }}</strong> • {{ date }}
-      </p>
-    </div>
-
-    <!-- Blog Content -->
-    <article
-      :class="[
-        'relative rounded-lg px-8 pt-5 pb-15 text-justify transition-all md:px-20',
-        contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
-      ]"
-    >
-      <ThemeToggleSwitch :contentTheme="contentTheme" @toggle-theme="toggleContentTheme" />
-      <div class="max-w-fit overflow-x-clip">
-        <div class="bjls-content" v-html="markedContent"></div>
+      <!-- Blog Post metadata -->
+      <div class="mb-6">
+        <h1
+          class="mb-2 flex min-h-fit content-center items-center justify-between bg-orange-500 py-2 pr-8 pl-3 text-2xl font-bold text-white md:text-4xl"
+        >
+          <span>{{ title }}</span>
+        </h1>
+        <p class="text-sm text-gray-400">
+          By <strong class="font-medium text-white">{{ author }}</strong> • {{ date }}
+        </p>
       </div>
-    </article>
 
-    <!-- Next Post (optional) -->
-    <!-- TODO: Implement Up Next component -->
-    <!-- <div v-if="nextPost" class="mt-12">
-    <h2 class="mb-2 text-xl font-semibold text-white">Up Next</h2>
-    <RouterLink
-      :to="`/blog/${nextPost.slug}`"
-      class="block rounded border-l-4 border-orange-500 bg-[#111] p-4 transition hover:bg-[#1a1a1a]"
-    >
-      <h3 class="font-bold text-orange-400">{{ nextPost.title }}</h3>
-      <p class="mt-1 text-sm text-gray-400">{{ nextPost.excerpt }}</p>
-    </RouterLink>
-  </div> -->
-  </section>
+      <!-- Blog Content -->
+      <article
+        :class="[
+          'relative rounded-lg px-8 pt-5 pb-15 text-justify transition-all md:px-20',
+          contentTheme === 'dark' ? 'bg-[#1e1e1e] text-gray-200' : 'bg-[#F5F5DB] text-gray-800',
+        ]"
+      >
+        <ThemeToggleSwitch :contentTheme="contentTheme" @toggle-theme="toggleContentTheme" />
+        <div class="max-w-fit overflow-x-clip">
+          <div class="bjls-content" v-html="markedContent"></div>
+        </div>
+      </article>
+    </section>
+  </transition>
 </template>
 
 <script>
@@ -71,11 +62,6 @@ export default {
       coverImage: '',
       content: ``,
       contentTheme: 'dark',
-      // nextPost: {
-      //   title: 'Why Composition API Matters',
-      //   excerpt: 'Learn why Vue’s Composition API is a game changer...',
-      //   slug: 'composition-api-matters',
-      // },
     }
   },
   methods: {
@@ -100,6 +86,9 @@ export default {
     },
   },
   computed: {
+    isLoading() {
+      return !this.title && !this.date && !this.content && !this.coverImage
+    },
     markedContent() {
       const sanitized = this.$sanitize(marked.parse(this.content))
 
@@ -136,3 +125,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
