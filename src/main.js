@@ -18,6 +18,11 @@ import {
   faCircleXmark,
   faLaptopCode,
   faUsers,
+  faLanguage,
+  faGamepad,
+  faPen,
+  faBook,
+  faCode,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin, faVuejs, faPython } from '@fortawesome/free-brands-svg-icons'
 
@@ -37,6 +42,11 @@ library.add([
   faCircleXmark,
   faLaptopCode,
   faUsers,
+  faLanguage,
+  faGamepad,
+  faPen,
+  faBook,
+  faCode,
 ])
 import 'firacode'
 import 'prismjs'

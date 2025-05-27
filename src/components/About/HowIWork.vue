@@ -47,7 +47,6 @@
 
 <script>
 export default {
-  name: 'HowIWork',
   data() {
     return {
       values: [
