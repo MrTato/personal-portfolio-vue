@@ -4,6 +4,7 @@ import MyJourney from '@/components/About/MyJourney.vue'
 import WhatIDo from '@/components/About/WhatIDo.vue'
 import HowIWork from '@/components/About/HowIWork.vue'
 import QuickPersonalBits from '@/components/About/QuickPersonalBits.vue'
+import CtaBanner from '@/components/About/CtaBanner.vue'
 </script>
 
 <template>
@@ -17,5 +18,7 @@ import QuickPersonalBits from '@/components/About/QuickPersonalBits.vue'
     <HowIWork />
 
     <QuickPersonalBits />
+
+    <CtaBanner />
   </div>
 </template>

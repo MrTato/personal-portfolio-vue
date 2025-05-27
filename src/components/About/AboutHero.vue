@@ -25,7 +25,7 @@
     <!-- Image Section -->
     <div class="flex flex-1 justify-center">
       <img
-        src="https://placehold.co/500x400?text=Your+Photo+Here"
+        src="/agile.webp"
         alt="Developer at work"
         class="w-full max-w-sm rounded-lg object-cover shadow-lg"
       />

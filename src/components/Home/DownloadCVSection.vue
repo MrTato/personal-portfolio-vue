@@ -11,7 +11,7 @@
 
       <!-- Download Button -->
       <a
-        :href="cvFile"
+        :href="'/Bayardo Lopez Web Developer CV.pdf'"
         download
         class="inline-block rounded-lg bg-red-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition duration-300 ease-in-out hover:bg-red-700 hover:shadow-xl active:scale-95"
       >
@@ -20,15 +20,3 @@
     </div>
   </section>
 </template>
-
-<script>
-export default {
-  name: 'DownloadCVSection',
-  props: {
-    cvFile: {
-      type: String,
-      default: '/public/Bayardo Lopez Web Developer CV.pdf',
-    },
-  },
-}
-</script>
