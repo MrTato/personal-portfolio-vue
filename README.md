@@ -1,46 +1,56 @@
 # 🌐 Personal Portfolio Website
 
-This is a personal portfolio website built with **Vue 3** and **Django**. It showcases my blog posts (currently live) and will soon feature personal projects, an about section, services, and more — all with a clean, dark-themed, responsive design. I'm building this as both a portfolio and a full-stack learning project.
+This is my personal portfolio website built with **Vue 3** and a custom **Django REST Framework** backend. It features a clean, responsive dark-themed design and serves as both a professional showcase and a full-stack learning project. The site includes a blog, an about section, and a contact form — all powered by a secure, modern stack.
+
+🌐 Live at: [https://bayardolopez.com](https://bayardolopez.com)
 
 ---
 
 ## ✨ Features
 
-### 📝 Blog Section
+### 📝 Blog
 
-- Posts written and managed via Django Admin
-- Rendered in Vue using Markdown ([Marked.js](https://marked.js.org/))
-- Syntax highlighting with [Prism.js](https://prismjs.com/)
-- HTML sanitization using [DOMPurify](https://github.com/cure53/DOMPurify)
-- Light/dark theme toggle for reading experience
-- Public comments with spam and self-promotion filtering (planned)
+- Posts managed via a Django Admin panel
+- Rendered in Vue using **Markdown**
+- Advanced Markdown features: syntax highlighting, tables, blockquotes, task lists, collapsible sections
+- Syntax highlighting via [Prism.js](https://prismjs.com/)
+- HTML sanitization via [DOMPurify](https://github.com/cure53/DOMPurify)
+- Fully responsive layout
+- Light/Dark mode toggle for enhanced readability
+- Backend API serves author and post metadata
 
-### 💼 Project Showcase (Coming Soon)
+### 👤 About Page
 
-- Gallery of project cards with screenshots, tech stack, and links
-- Dedicated detail pages for each project
-- Content managed through Django Admin
+- Personal introduction with styled hero section
+- **"How I Work"** section describing work ethic and process
+- **Quick Personal Bits** component with fun, responsive cards (e.g. languages spoken, hobbies)
+- Final **Call-to-Action Banner** encouraging collaboration or contact
 
-### 🧑‍💼 About & Services (Coming Soon)
+### 📬 Contact Form
 
-- Overview of background and skills
-- List of services provided
+- Integrated form that submits to a DRF backend
+- Features **Google reCAPTCHA v3** for spam prevention
+- Success and error modals provide instant feedback
+- Sends a confirmation email to the user upon successful submission
 
-### 📬 Contact Form (Planned)
+### 💼 Project Showcase (Planned)
 
-- Will send emails directly to my inbox
-- Client-side validation
+- Grid of project cards with descriptions and tech stack
+- Detail pages per project
+- Content managed via backend
 
 ### 🌍 Multilingual Support (Planned)
 
 - Toggle between English and Spanish using [Vue I18n](https://vue-i18n.intlify.dev/)
 
-### 🌑 Theming & Design
+### 🌐 SEO & Social Sharing
 
-- Entire website is dark-themed
-- Blog posts can be toggled between dark and light mode
-- Responsive layout for mobile and desktop
-- Based on a free dark [Figma](https://www.figma.com/) template
+- Optimized `<meta>` tags in `index.html` for better visibility on social media
+- Dynamic titles and improved semantics for accessibility and search indexing
+
+### 🛡️ Monitoring
+
+- Integrated [Sentry](https://sentry.io/) for real-time error tracking in production
 
 ---
 
@@ -49,12 +59,15 @@ This is a personal portfolio website built with **Vue 3** and **Django**. It sho
 ### 🔹 Frontend
 
 - [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
 - [Vue Router](https://router.vuejs.org/)
 - [Axios](https://axios-http.com/)
 - [Marked.js](https://marked.js.org/)
 - [Prism.js](https://prismjs.com/)
 - [DOMPurify](https://github.com/cure53/DOMPurify)
 - [Vue I18n](https://vue-i18n.intlify.dev/) _(planned)_
+- [Sentry SDK](https://docs.sentry.io/platforms/python/guides/django/)
 
 ### 🔹 Backend
 
@@ -69,8 +82,7 @@ This is a personal portfolio website built with **Vue 3** and **Django**. It sho
 
 - **Frontend:** [Netlify](https://www.netlify.com/)
 - **Backend & DB:** [Render](https://render.com/)
-- Backend uses Gunicorn (inside Render) — no Nginx currently
-- Manual deployment (for now)
+- Gunicorn on Render
 
 ---
 
@@ -84,17 +96,8 @@ This is a personal portfolio website built with **Vue 3** and **Django**. It sho
 
 ```bash
 npm install
-```
-
-```bash
 npm run dev
-```
-
-```bash
 npm run build
-```
-
-```bash
 npm run lint
 ```
 
@@ -114,14 +117,14 @@ See [Vite Configuration Reference](https://vite.dev/config/)
 ## 📌 Roadmap
 
 - [x] Blog with Markdown, Prism.js, and DOMPurify
+- [x] About page with personal info and CTA
+- [x] Contact form with backend + reCAPTCHA
 - [ ] Project showcase
-- [ ] About & services pages
-- [ ] Contact form with email integration
 - [ ] Internationalization (EN/ES) using Vue I18n
-- [ ] CI/CD pipeline for frontend/backend
 
 ---
 
-## 📄 License
+## 🏷️ Versioning
 
-This project is for personal use and learning. Feel free to explore and learn from it.
+This project follows **semver-style tags** (`v1.x.x`).  
+Latest: **`v1.5.0`**
