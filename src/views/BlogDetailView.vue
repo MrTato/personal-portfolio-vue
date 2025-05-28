@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       title: '',
-      author: 'Bayardo López',
+      author: '',
       date: '',
       coverImage: '',
       content: ``,
@@ -70,6 +70,7 @@ export default {
         const response = await this.$axios.get(`/blog-posts/${this.slug}/`)
         this.title = response.data.title
         this.date = response.data.updated_at.split('T')[0]
+        this.author = response.data.author
         this.content = response.data.content
         this.coverImage = response.data.cover_image
       } catch (error) {

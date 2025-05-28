@@ -5,9 +5,9 @@
       <p>
         My path into tech started with a Lego robotics course back in high school. That hands-on
         experience, combined with hours spent experimenting in Game Maker Studio, gave me an early
-        glimpse into how satisfying it could be to build things that worked. It wasn’t long before I
-        realized coding wasn’t just fun — it was something I wanted to pursue seriously. So I chose
-        Systems Engineering as my career.
+        glimpse into how satisfying it could be to build things. It wasn’t long before I realized
+        coding wasn’t just fun — it was something I wanted to pursue seriously. So I chose Systems
+        Engineering as my career.
       </p>
       <p>
         What really solidified that decision was a project I built in C during university — a
@@ -28,12 +28,12 @@
         CSS, Python, Django REST Framework, and Vue — I taught myself through experience,
         experimentation, and on-the-job learning. Over time, I’ve learned to focus less on
         perfectionism and more on delivering code that works and solves real problems. I prioritize
-        what matters most for the client, balancing what they want with what they truly need.
+        what matters most for the client, balancing wants against needs.
       </p>
       <p>
-        Now, I’m taking everything I’ve learned and moving into freelancing — where I can continue
-        building meaningful tools for real people, and hopefully, help others find the same
-        satisfaction I felt when I saw my first users enjoy something I built.
+        Now, I’m taking everything I’ve learned to continue building meaningful tools for real
+        people, and find the same satisfaction I felt when I saw my first users enjoy something I
+        built.
       </p>
     </div>
   </section>
