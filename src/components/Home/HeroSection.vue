@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative flex flex-col items-center justify-center overflow-hidden bg-[#0D0D0D] px-6 py-20 text-center text-white"
+    class="relative flex flex-col items-center justify-center overflow-hidden rounded-b-2xl bg-[#0D0D0D] px-6 py-20 text-center text-white"
   >
     <!-- Profile Image -->
     <img
