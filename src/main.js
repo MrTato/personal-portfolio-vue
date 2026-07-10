@@ -3,7 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
@@ -14,8 +13,6 @@ import {
   faMoon,
   faSun,
   faDatabase,
-  faCircleCheck,
-  faCircleXmark,
   faLaptopCode,
   faUsers,
   faLanguage,
@@ -38,8 +35,6 @@ library.add([
   faVuejs,
   faPython,
   faDatabase,
-  faCircleCheck,
-  faCircleXmark,
   faLaptopCode,
   faUsers,
   faLanguage,
@@ -58,18 +53,8 @@ import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-css'
 import DOMPurify from 'dompurify'
 import * as Sentry from '@sentry/vue'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
 
 const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
-
-if (import.meta.env.MODE === 'production') {
-  app.use(VueReCaptcha, {
-    siteKey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
-    loaderOptions: {
-      autoHideBadge: true,
-    },
-  })
-}
 
 if (import.meta.env.MODE === 'production') {
   Sentry.init({
@@ -80,10 +65,6 @@ if (import.meta.env.MODE === 'production') {
     sendDefaultPii: true,
   })
 }
-
-axios.defaults.baseURL = import.meta.env.VITE_API_URL
-
-app.config.globalProperties.$axios = axios
 
 app.config.globalProperties.$sanitize = DOMPurify.sanitize
 

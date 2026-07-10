@@ -1,143 +1,70 @@
-<script setup>
-import * as Sentry from '@sentry/vue'
-import SuccessModal from '@/components/shared/SuccessModal.vue'
-import ErrorModal from '@/components/shared/ErrorModal.vue'
-import SubmitButton from '@/components/shared/SubmitButton.vue'
-</script>
-
 <template>
-  <section class="bg-[#0d0d0d] px-6 py-10 text-white lg:py-30">
-    <div class="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-2">
-      <!-- Contact Info -->
-      <div class="space-y-9">
-        <h2 class="text-3xl font-extrabold text-orange-400">Get in Touch</h2>
-        <p class="text-base text-gray-300">
-          Feel free to reach out by filling out the form — I’ll get back to you as soon as possible.
+  <section
+    class="contact-fire relative isolate flex min-h-[60vh] w-full items-center overflow-hidden px-6 py-16 text-white lg:py-30"
+  >
+    <div class="relative z-10 mx-auto flex max-w-3xl flex-col items-start gap-8">
+      <div class="space-y-5">
+        <p class="font-mono text-sm font-semibold tracking-widest text-orange-400 uppercase">
+          Contact
         </p>
-        <p class="text-sm text-gray-400">Or send an email directly:</p>
-        <p class="text-xl font-semibold text-white">
-          <a href="mailto:bayardo@example.com" class="hover:underline"
-            >developer@bayardolopez.com</a
-          >
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl">Let's work together.</h1>
+        <p class="max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
+          For project inquiries, collaboration ideas, or anything you think I should see, send me an
+          email and I will get back to you as soon as possible.
         </p>
       </div>
-      <!-- Contact Form -->
-      <form class="space-y-6" @submit.prevent="submitForm">
-        <fieldset :disabled="isSending" class="space-y-6">
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <input
-              type="text"
-              v-model="form.name"
-              placeholder="Your name*"
-              required
-              class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-            />
-            <input
-              type="email"
-              v-model="form.email"
-              placeholder="Your email*"
-              required
-              class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-            />
-          </div>
-          <input
-            type="tel"
-            v-model="form.phone"
-            placeholder="Your phone"
-            class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-          />
-          <textarea
-            v-model="form.message"
-            rows="5"
-            placeholder="Message"
-            required
-            class="w-full rounded bg-[#181818] p-4 text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-          ></textarea>
-        </fieldset>
 
-        <SubmitButton :is-sending="isSending" />
-      </form>
+      <div class="flex flex-col items-start gap-4">
+        <a
+          href="mailto:developer@bayardolopez.com?subject=Portfolio%20Inquiry"
+          class="inline-flex items-center gap-3 rounded-full bg-orange-500 px-7 py-3 font-semibold text-white shadow-lg transition duration-300 hover:bg-orange-600 active:scale-95"
+        >
+          <font-awesome-icon :icon="['fas', 'envelope']" />
+          Email Me
+        </a>
+        <a
+          href="mailto:developer@bayardolopez.com"
+          class="text-lg font-semibold text-white underline decoration-orange-500 underline-offset-6 transition hover:text-orange-400"
+        >
+          developer@bayardolopez.com
+        </a>
+      </div>
     </div>
-
-    <SuccessModal :show="showSuccess" @toggle-success-modal="onToggleSuccessModal" />
-
-    <ErrorModal :show="showError" @toggle-error-modal="onToggleErrorModal" />
   </section>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      },
-      showSuccess: false,
-      showError: false,
-      isSending: false,
-    }
-  },
-  methods: {
-    onToggleSuccessModal() {
-      this.showSuccess = false
-    },
-    onToggleErrorModal() {
-      this.showError = false
-    },
-    async submitForm() {
-      this.isSending = true
-      let response
-      if (import.meta.env.MODE === 'development') {
-        try {
-          response = await this.$axios.post('/contact/', this.form)
-
-          if (response.status !== 200 && response.status !== 201) {
-            throw new Error(response.data)
-          }
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error(error)
-        }
-      } else {
-        try {
-          // Get token from reCAPTCHA v3
-          const token = await this.$recaptcha('contact_form')
-
-          // Prepare form payload
-          const payload = {
-            ...this.form,
-            recaptchaToken: token,
-          }
-
-          // Send with Axios
-          response = await this.$axios.post('/contact/', payload)
-
-          if (response.status !== 200 && response.status !== 201) {
-            throw new Error(response.data)
-          }
-        } catch (error) {
-          Sentry.captureException(new Error(error))
-        }
-      }
-
-      this.isSending = false
-
-      if (response.status === 200 || response.status === 201) {
-        this.showSuccess = true
-
-        this.form = {
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-        }
-      } else {
-        this.showError = true
-      }
-    },
-  },
+<style scoped>
+.contact-fire {
+  background:
+    radial-gradient(circle at 18% 100%, rgba(255, 107, 0, 0.32), transparent 34%),
+    radial-gradient(circle at 76% 104%, rgba(255, 183, 77, 0.22), transparent 30%),
+    linear-gradient(135deg, #070707 0%, #111 48%, #170b05 100%);
 }
-</script>
+
+.contact-fire::before {
+  content: '';
+  position: absolute;
+  inset: auto -12% -42% -12%;
+  height: 70%;
+  background:
+    radial-gradient(ellipse at 28% 82%, rgba(255, 75, 0, 0.34), transparent 34%),
+    radial-gradient(ellipse at 50% 70%, rgba(255, 135, 36, 0.28), transparent 36%),
+    radial-gradient(ellipse at 68% 90%, rgba(255, 199, 89, 0.18), transparent 28%);
+  filter: blur(28px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.contact-fire::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(255, 129, 35, 0.06) 48%, transparent 72%),
+    radial-gradient(circle at 44% 86%, rgba(255, 231, 161, 0.08), transparent 22%),
+    linear-gradient(to top, rgba(10, 4, 0, 0.32), transparent 45%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  pointer-events: none;
+}
+</style>
