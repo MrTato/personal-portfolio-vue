@@ -1,7 +1,21 @@
 import labradorContent from '@/content/blog/whats-it-like-living-with-a-labrador.md?raw'
 import remoteWorkContent from '@/content/blog/what-i-like-the-most-about-remote-work-and-why-you.md?raw'
+import awsS3DjangoContent from '@/content/blog/setting-aws-s3-as-the-default-file-storage-in-a-dj.md?raw'
 
 export const blogPosts = [
+  {
+    title: 'Setting AWS S3 as the Default File Storage in a Django Project',
+    slug: 'setting-aws-s3-as-the-default-file-storage-in-a-dj',
+    description:
+      "Don't use DEFAULT_FILE_STORAGE. I will teach you the right way if you go right this way...",
+    author: 'Bayardo Lopez',
+    updated_at: '2026-07-09',
+    published: true,
+    spotlight: false,
+    preview_image: '/blog/aws-s3-django-preview.png',
+    cover_image: '/blog/aws-s3-django-cover.png',
+    content: awsS3DjangoContent,
+  },
   {
     title: 'What I like the most about Remote Work and why you should try it too',
     slug: 'what-i-like-the-most-about-remote-work-and-why-you',
