@@ -1,8 +1,21 @@
 import labradorContent from '@/content/blog/whats-it-like-living-with-a-labrador.md?raw'
 import remoteWorkContent from '@/content/blog/what-i-like-the-most-about-remote-work-and-why-you.md?raw'
 import awsS3DjangoContent from '@/content/blog/setting-aws-s3-as-the-default-file-storage-in-a-dj.md?raw'
+import vueHeroCarouselContent from '@/content/blog/smooth-slides-with-vue-building-a-hero-carousel.md?raw'
 
 export const blogPosts = [
+  {
+    title: 'Smooth Slides with Vue: Building a Hero Carousel',
+    slug: 'smooth-slides-with-vue-building-a-hero-carousel',
+    description: 'How to do sliding animations for a Hero section carousel, as well as a little hack.',
+    author: 'Bayardo Lopez',
+    updated_at: '2026-07-10',
+    published: true,
+    spotlight: false,
+    preview_image: '/blog/vue-hero-carousel.png',
+    cover_image: '/blog/vue-hero-carousel.png',
+    content: vueHeroCarouselContent,
+  },
   {
     title: 'Setting AWS S3 as the Default File Storage in a Django Project',
     slug: 'setting-aws-s3-as-the-default-file-storage-in-a-dj',
