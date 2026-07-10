@@ -2,8 +2,8 @@
 import ThemeToggleSwitch from '@/components/Blog/ThemeToggleSwitch.vue'
 import { marked } from 'marked'
 import Prism from 'prismjs'
-import * as Sentry from '@sentry/vue'
 import BlogDetailLoadingSkeleton from '@/components/Blog/BlogDetailLoadingSkeleton.vue'
+import { getBlogPostBySlug } from '@/data/blogPosts'
 </script>
 
 <template>
@@ -65,22 +65,19 @@ export default {
     }
   },
   methods: {
-    async getData() {
-      try {
-        const response = await this.$axios.get(`/blog-posts/${this.slug}/`)
-        this.title = response.data.title
-        this.date = response.data.updated_at.split('T')[0]
-        this.author = response.data.author
-        this.content = response.data.content
-        this.coverImage = response.data.cover_image
-      } catch (error) {
-        if (import.meta.env.MODE === 'development') {
-          // eslint-disable-next-line no-console
-          console.error(error)
-        } else {
-          Sentry.captureException(new Error(error))
-        }
+    getData() {
+      const post = getBlogPostBySlug(this.slug)
+
+      if (!post) {
+        this.$router.replace({ name: 'NotFound' })
+        return
       }
+
+      this.title = post.title
+      this.date = post.updated_at.split('T')[0]
+      this.author = post.author
+      this.content = post.content
+      this.coverImage = post.cover_image
     },
     toggleContentTheme() {
       this.contentTheme = this.contentTheme === 'dark' ? 'light' : 'dark'
@@ -107,8 +104,7 @@ export default {
         })
         .replace(/<\/pre>/g, '</pre></div>')
 
-      // repairs image urls served from api
-      return wrappedHtml.replace(/src="\/media\//g, `src="${import.meta.env.VITE_API_URL}/media/`)
+      return wrappedHtml
     },
   },
   created() {

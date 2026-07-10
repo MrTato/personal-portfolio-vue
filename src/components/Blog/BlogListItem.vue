@@ -7,6 +7,7 @@
       <article class="flex w-full items-center">
         <!-- Preview image -->
         <img
+          v-if="imageUrl"
           class="hidden h-16 w-16 rounded-full object-cover sm:block"
           :src="imageUrl"
           alt="Blog Thumbnail"
@@ -37,7 +38,7 @@ export default {
     },
     imageUrl: {
       type: String,
-      default: 'https://placehold.co/150',
+      default: '',
     },
     lastUpdated: {
       type: String,

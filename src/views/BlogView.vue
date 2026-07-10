@@ -2,7 +2,7 @@
 import BlogListItem from '@/components/Blog/BlogListItem.vue'
 import HeroSection from '@/components/Blog/HeroSection.vue'
 import HeroLoading from '@/components/Blog/HeroLoading.vue'
-import * as Sentry from '@sentry/vue'
+import { getPublishedBlogPosts } from '@/data/blogPosts'
 </script>
 
 <template>
@@ -37,29 +37,12 @@ import * as Sentry from '@sentry/vue'
 <script>
 export default {
   data() {
+    const posts = getPublishedBlogPosts()
+
     return {
-      slides: [],
-      posts: [],
+      slides: posts.filter((post) => post.spotlight),
+      posts,
     }
-  },
-  methods: {
-    async getData() {
-      try {
-        const response = await this.$axios.get('/blog-posts/')
-        this.slides = response.data.filter((post) => post.spotlight)
-        this.posts = response.data
-      } catch (error) {
-        if (import.meta.env.MODE === 'development') {
-          // eslint-disable-next-line no-console
-          console.error(error)
-        } else {
-          Sentry.captureException(new Error(error))
-        }
-      }
-    },
-  },
-  created() {
-    this.getData()
   },
 }
 </script>
