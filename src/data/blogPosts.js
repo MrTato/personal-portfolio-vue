@@ -2,12 +2,27 @@ import labradorContent from '@/content/blog/whats-it-like-living-with-a-labrador
 import remoteWorkContent from '@/content/blog/what-i-like-the-most-about-remote-work-and-why-you.md?raw'
 import awsS3DjangoContent from '@/content/blog/setting-aws-s3-as-the-default-file-storage-in-a-dj.md?raw'
 import vueHeroCarouselContent from '@/content/blog/smooth-slides-with-vue-building-a-hero-carousel.md?raw'
+import beatAndMotionContent from '@/content/blog/beat-and-motion-review.md?raw'
 
 export const blogPosts = [
   {
+    title: 'Beat & Motion: The Beautiful Reality of Chasing Your Dreams',
+    slug: 'beat-and-motion-the-beautiful-reality-of-chasing-your-dreams',
+    description:
+      "A beautiful manga about talent, ambition, love, and the courage to pursue your dreams. A story that ended too soon, but one I'll never forget.",
+    author: 'Bayardo Lopez',
+    updated_at: '2026-10-12',
+    published: true,
+    spotlight: true,
+    preview_image: '/blog/beat-and-motion.png',
+    cover_image: '/blog/beat-and-motion.png',
+    content: beatAndMotionContent,
+  },
+  {
     title: 'Smooth Slides with Vue: Building a Hero Carousel',
     slug: 'smooth-slides-with-vue-building-a-hero-carousel',
-    description: 'How to do sliding animations for a Hero section carousel, as well as a little hack.',
+    description:
+      'How to do sliding animations for a Hero section carousel, as well as a little hack.',
     author: 'Bayardo Lopez',
     updated_at: '2026-07-10',
     published: true,
@@ -37,7 +52,7 @@ export const blogPosts = [
     author: 'Marian Lopez',
     updated_at: '2026-07-09',
     published: true,
-    spotlight: true,
+    spotlight: false,
     preview_image: '/blog/remote-work.png',
     cover_image: '/blog/remote-work.png',
     content: remoteWorkContent,
@@ -50,7 +65,7 @@ export const blogPosts = [
     author: 'Marian Lopez',
     updated_at: '2026-07-05',
     published: true,
-    spotlight: true,
+    spotlight: false,
     preview_image: '/blog/labrador.jpeg',
     cover_image: '/blog/labrador.jpeg',
     content: labradorContent,
