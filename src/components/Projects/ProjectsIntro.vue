@@ -1,3 +1,7 @@
+<script setup>
+defineProps({ projectCount: { type: Number, required: true } })
+</script>
+
 <template>
   <section
     class="grid grid-cols-2 items-center gap-[65px] px-5 pb-[50px] max-[1000px]:gap-[30px] max-[1000px]:px-0 max-sm:grid-cols-1 max-sm:gap-7 max-sm:pb-[35px]"
@@ -16,18 +20,26 @@
       class="mt-[30px] border-l-2 border-[#ff7900] pl-[54px] max-[1000px]:pl-7 max-sm:mt-0 max-sm:pl-5 [&>p]:max-w-[430px] [&>p]:text-base [&>p]:leading-[1.6] [&>p]:tracking-[.045em]"
     >
       <p>
-        A collection of web applications and websites I’ve built, from lead-generation sites to
-        custom tools and experiments.
+        A collection of web applications and websites I’ve built, from production web applications
+        to custom tools and experiments.
       </p>
       <ul
         class="mt-7 flex justify-between gap-5 max-sm:gap-3 [&>li]:flex [&>li]:flex-col [&>li]:text-base [&>li]:leading-tight max-sm:[&>li]:text-sm"
       >
         <li>
-          <span
-            class="mb-3.5 block size-[29px] text-[26px] leading-[29px] text-[#ff7900]"
+          <svg
+            class="mb-3.5 block size-[29px] shrink-0 text-[#ff7900]"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
-            >&lt;/&gt;</span
-          ><strong>6+</strong><span>Projects</span>
+          >
+            <path d="m10 9-7 7 7 7m12-14 7 7-7 7M19 4l-6 24" />
+          </svg>
+          <strong>{{ projectCount }}</strong><span>Projects</span>
         </li>
         <li>
           <svg
