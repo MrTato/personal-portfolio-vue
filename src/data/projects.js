@@ -69,5 +69,3 @@ export const projects = [
     headline: 'Campaign Overview',
   },
 ]
-
-export const projectCategories = ['All', 'Websites', 'Web Apps', 'Experiments']
