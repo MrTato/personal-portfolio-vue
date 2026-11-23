@@ -17,7 +17,7 @@ defineProps({ project: { type: Object, required: true } })
         >{{ project.label }}</span
       >
       <h2>
-        <RouterLink :to="`/projects/${project.slug}`">{{ project.name }}</RouterLink>
+        <a :href="project.url" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
       </h2>
       <p>{{ project.description }}</p>
       <div class="mt-auto flex w-full items-center justify-between gap-2">
@@ -28,8 +28,10 @@ defineProps({ project: { type: Object, required: true } })
             {{ technology }}
           </li>
         </ul>
-        <RouterLink
-          :to="`/projects/${project.slug}`"
+        <a
+          :href="project.url"
+          target="_blank"
+          rel="noopener noreferrer"
           class="shrink-0 p-[3px] text-[#ff7900] [&>svg]:size-[23px]"
           :aria-label="`View ${project.name}`"
           ><svg
@@ -42,7 +44,7 @@ defineProps({ project: { type: Object, required: true } })
             <path
               d="M14 3h7v7m0-7L10 14M10 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-5"
             /></svg
-        ></RouterLink>
+        ></a>
       </div>
     </div>
   </article>

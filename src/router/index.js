@@ -5,7 +5,6 @@ import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
-import ProjectDetailView from '@/views/ProjectDetailView.vue'
 import MaintenanceView from '@/views/MaintenanceView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
@@ -32,11 +31,6 @@ const router = createRouter({
       path: '/projects',
       name: 'projects',
       component: ProjectsView,
-    },
-    {
-      path: '/projects/:slug',
-      name: 'project-detail',
-      component: ProjectDetailView,
     },
     {
       path: '/contact',

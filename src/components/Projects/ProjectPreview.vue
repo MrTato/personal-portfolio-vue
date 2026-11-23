@@ -3,8 +3,10 @@ defineProps({ project: { type: Object, required: true } })
 </script>
 
 <template>
-  <RouterLink
-    :to="`/projects/${project.slug}`"
+  <a
+    :href="project.url"
+    target="_blank"
+    rel="noopener noreferrer"
     class="relative block h-[190px] overflow-hidden border-b border-[#383838] max-sm:h-[220px] min-[1400px]:h-[210px]"
     tabindex="-1"
     aria-hidden="true"
@@ -96,5 +98,5 @@ defineProps({ project: { type: Object, required: true } })
         class="-ml-[10%] h-2 w-[120%] bg-[linear-gradient(#a2a1a0,#535452)] [clip-path:polygon(8%_0,92%_0,100%_75%,85%_100%,15%_100%,0_75%)]"
       ></div>
     </div>
-  </RouterLink>
+  </a>
 </template>

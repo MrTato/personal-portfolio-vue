@@ -1,7 +1,8 @@
-// Placeholder content and ordering, ready for real project data.
+// Placeholder content and URLs, ready for real project data.
 export const projects = [
   {
     slug: 'optimaclean',
+    url: 'https://google.com',
     name: 'OptimaClean',
     label: 'Website',
     category: 'Websites',
@@ -14,6 +15,7 @@ export const projects = [
   },
   {
     slug: 'recipe-manager',
+    url: 'https://google.com',
     name: 'Recipe Manager',
     label: 'Web App',
     category: 'Web Apps',
@@ -26,6 +28,7 @@ export const projects = [
   },
   {
     slug: 'gaming-shop',
+    url: 'https://google.com',
     name: 'Gaming Shop',
     label: 'Experiment',
     category: 'Experiments',
@@ -37,6 +40,7 @@ export const projects = [
   },
   {
     slug: 'divein-studio',
+    url: 'https://google.com',
     name: 'DiveIn Studio',
     label: 'Web App',
     category: 'Web Apps',
@@ -48,6 +52,7 @@ export const projects = [
   },
   {
     slug: 'recipe-editor',
+    url: 'https://google.com',
     name: 'Recipe Editor (Plugin)',
     label: 'Plugin',
     category: 'Experiments',
@@ -59,6 +64,7 @@ export const projects = [
   },
   {
     slug: 'adtech-reporting',
+    url: 'https://google.com',
     name: 'AdTech Reporting (ETL)',
     label: 'Data/ETL',
     category: 'Experiments',
