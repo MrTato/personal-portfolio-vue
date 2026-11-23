@@ -8,10 +8,10 @@ defineProps({ projectCount: { type: Number, required: true } })
     aria-labelledby="projects-title"
   >
     <div>
-      <p class="mb-3.5 text-base font-bold tracking-[.12em] text-[#ff7900] uppercase">Projects</p>
+      <p class="mb-2 text-sm tracking-wide text-orange-400 uppercase">Projects</p>
       <h1
         id="projects-title"
-        class="font-[Impact,Arial_Narrow,sans-serif] text-[clamp(54px,6.4vw,88px)] leading-[.99] font-black tracking-[.015em] uppercase max-sm:text-[clamp(50px,13vw,76px)]"
+        class="mb-4 text-3xl leading-tight font-bold text-white md:text-5xl"
       >
         Selected<br />Projects
       </h1>
