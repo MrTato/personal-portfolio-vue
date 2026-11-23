@@ -3,7 +3,6 @@ import { computed, ref } from 'vue'
 import ProjectsIntro from '@/components/Projects/ProjectsIntro.vue'
 import ProjectsToolbar from '@/components/Projects/ProjectsToolbar.vue'
 import ProjectCard from '@/components/Projects/ProjectCard.vue'
-import ProjectsContactCta from '@/components/Projects/ProjectsContactCta.vue'
 import { projects, projectCategories } from '@/data/projects'
 
 const activeCategory = ref('All')
@@ -38,8 +37,6 @@ const visibleProjects = computed(() => {
       >
         <ProjectCard v-for="project in visibleProjects" :key="project.slug" :project="project" />
       </section>
-
-      <ProjectsContactCta />
     </div>
   </div>
 </template>
