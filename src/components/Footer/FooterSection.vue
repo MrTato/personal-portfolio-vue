@@ -11,9 +11,9 @@
       <h3 class="mb-2 text-lg font-semibold text-white">Navigation</h3>
       <ul class="space-y-1">
         <li><RouterLink to="/blog" class="transition hover:text-orange-400">Blog</RouterLink></li>
-        <!-- <li>
+        <li>
           <RouterLink to="/projects" class="transition hover:text-orange-400">Projects</RouterLink>
-        </li> -->
+        </li>
         <li>
           <RouterLink to="/contact" class="transition hover:text-orange-400">Contact</RouterLink>
         </li>

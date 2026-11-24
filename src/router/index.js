@@ -4,6 +4,7 @@ import BlogDetailView from '@/views/BlogDetailView.vue'
 import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import ContactView from '@/views/ContactView.vue'
+import ProjectsView from '@/views/ProjectsView.vue'
 import MaintenanceView from '@/views/MaintenanceView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
@@ -29,7 +30,7 @@ const router = createRouter({
     {
       path: '/projects',
       name: 'projects',
-      component: MaintenanceView,
+      component: ProjectsView,
     },
     {
       path: '/contact',
