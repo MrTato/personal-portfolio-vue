@@ -1,12 +1,11 @@
 <script setup>
 import HeroSection from '@/components/Home/HeroSection.vue'
-import DownloadCVSection from '@/components/Home/DownloadCVSection.vue'
 import WhatIDoSection from '@/components/Home/WhatIDoSection.vue'
 import SkillsSection from '@/components/Home/SkillsSection.vue'
 </script>
 
 <template>
-  <section class="flex flex-col items-center">
+  <section class="flex flex-col items-center pb-12 md:pb-20">
     <HeroSection
       profileImage="/profile.webp"
       name="Bayardo López"
@@ -18,7 +17,5 @@ import SkillsSection from '@/components/Home/SkillsSection.vue'
     <WhatIDoSection class="max-w-4xl" />
 
     <SkillsSection class="w-screen max-w-6xl" />
-
-    <DownloadCVSection />
   </section>
 </template>
